@@ -39,16 +39,7 @@ const WeeklyDashboard = () => {
               <Item>graph 5</Item>
             </Grid>
             <Grid xs={4}>
-              <Container maxWidth="xxl">
-                <Grid container spacing={2}>
-                  <Grid xs={12}>
-                    <Item>Activity Completion</Item>
-                  </Grid>
-                  <Grid xs={12}>
-                    <Item>Health Meals</Item>
-                  </Grid>
-                </Grid>
-              </Container>
+              <Item>graph 5</Item>
             </Grid>
           </Grid>
         </Box>

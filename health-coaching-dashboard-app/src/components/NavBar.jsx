@@ -12,6 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
     },
     padding: theme.spacing(1),
     textAlign: 'center',
+    border: `2px solid ${'#548235'}`,
 }));
 
 const DailyOverviewTab = styled(Paper)(({ theme }) => ({
@@ -25,6 +26,16 @@ const DailyOverviewTab = styled(Paper)(({ theme }) => ({
     color: 'black',
 }));
 
+const Day = styled(Button)(() => ({
+    width: '100%', 
+    height: '100%', 
+    padding: 0, 
+    color: 'black', 
+    '&:hover': {
+      color: 'white'
+    }
+}));
+
 const NavBar = () => {
   return (
     <Box>
@@ -33,52 +44,52 @@ const NavBar = () => {
           <DailyOverviewTab elevation={0}>Daily Overviews:</DailyOverviewTab>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8} sx={{ border: `2px solid ${'#548235'}` }}>
-            <Button href="/sunday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black', '&:hover': {color: 'white'}}}>
+          <Item elevation={8}>
+            <Day href="/sunday">
               Sunday
-            </Button>
+            </Day>
           </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8} sx={{ border: `2px solid ${'#548235'}` }}>
-            <Button href="/monday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black', '&:hover': {color: 'white'}}}>
+          <Item elevation={8}>
+            <Day href="/monday">
               Monday
-            </Button>
+            </Day>
           </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8} sx={{ border: `2px solid ${'#548235'}` }}>
-            <Button href="/tuesday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black', '&:hover': {color: 'white'}}}>
+          <Item elevation={8}>
+            <Day href="/tuesday">
               Tuesday
-            </Button>
+            </Day>
           </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8} sx={{ border: `2px solid ${'#548235'}` }}>
-            <Button href="/wednesday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black', '&:hover': {color: 'white'}}}>
+          <Item elevation={8}>
+            <Day href="/wednesday">
               Wednesday
-            </Button>
+            </Day>
           </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8} sx={{ border: `2px solid ${'#548235'}` }}>
-            <Button href="/thursday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black', '&:hover': {color: 'white'}}}>
+          <Item elevation={8}>
+            <Day href="/thursday">
               Thursday
-            </Button>
+            </Day>
           </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8} sx={{ border: `2px solid ${'#548235'}` }}>
-            <Button href="/friday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black', '&:hover': {color: 'white'}}}>
+          <Item elevation={8}>
+            <Day href="/friday">
               Friday
-            </Button>
+            </Day>
           </Item>
         </Grid> 
         <Grid xs={1.5}>
-          <Item elevation={8} sx={{ border: `2px solid ${'#548235'}` }}>
-            <Button href="/saturday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black', '&:hover': {color: 'white'}}}>
+          <Item elevation={8}>
+            <Day href="/saturday">
               Saturday
-            </Button>
+            </Day>
           </Item>
         </Grid>   
       </Grid>
