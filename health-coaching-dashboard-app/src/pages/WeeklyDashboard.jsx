@@ -13,6 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  border: `1px solid ${'#548235'}`,
 }));
 
 const WeeklyDashboard = () => {
@@ -24,22 +25,28 @@ const WeeklyDashboard = () => {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             <Grid xs={4}>
-              <Item>graph 1</Item>
+              <Item elevation={4}>Hours of Sleep</Item>
             </Grid>
             <Grid xs={4}>
-              <Item>graph 2</Item>
+              <Item elevation={4}>Zone Minutes</Item>
             </Grid>
             <Grid xs={4}>
-              <Item>graph 3</Item>
+              <Item elevation={4}>Sleep vs Zone</Item>
             </Grid>
             <Grid xs={4}>
-              <Item>graph 4</Item>
+              <Item elevation={4}>Steps</Item>
             </Grid>
             <Grid xs={4}>
-              <Item>graph 5</Item>
+              <Item elevation={4}>Servings of Fruits and Vegetables</Item>
             </Grid>
             <Grid xs={4}>
-              <Item>graph 5</Item>
+              <Item elevation={4}>Healthy Meals</Item>
+            </Grid>
+            <Grid xs={4}>
+              <Item elevation={4}>Activity Completion</Item>
+            </Grid>
+            <Grid xs={4}>
+              <Item elevation={4}>User's Weekly SMART Goals</Item>
             </Grid>
           </Grid>
         </Box>
