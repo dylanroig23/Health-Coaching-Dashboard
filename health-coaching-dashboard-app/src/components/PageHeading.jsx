@@ -8,7 +8,7 @@ const PageHeading = ({ headingText }) => {
       theme={{
         palette: {
           primary: {
-            main: '#A827FB',
+            main: '#a9d18e',
           },
         },
       }}
@@ -21,6 +21,7 @@ const PageHeading = ({ headingText }) => {
           bgcolor: 'primary.main',
           display: 'flex',
           alignItems: 'center',
+          border: `2px solid ${'#548235'}`, 
         }}
       >
         <h1
