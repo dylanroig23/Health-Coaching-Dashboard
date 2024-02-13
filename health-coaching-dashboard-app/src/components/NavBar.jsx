@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
+import Button from '@mui/material/Button';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: 'white',
@@ -34,26 +35,54 @@ const NavBar = () => {
           <DailyOverviewTab elevation={0}>Daily Overviews:</DailyOverviewTab>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8}>Sunday</Item>
+          <Item elevation={8}>
+            <Button href="/sunday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black'}}>
+              Sunday
+            </Button>
+          </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8}>Monday</Item>
+          <Item elevation={8}>
+            <Button href="/monday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black'}}>
+              Monday
+            </Button>
+          </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8}>Tuesday</Item>
+          <Item elevation={8}>
+            <Button href="/tuesday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black'}}>
+              Tuesday
+            </Button>
+          </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8}>Wednesday</Item>
+          <Item elevation={8}>
+            <Button href="/wednesday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black'}}>
+              Wednesday
+            </Button>
+          </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8}>Thursday</Item>
+          <Item elevation={8}>
+            <Button href="/thursday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black'}}>
+              Thursday
+            </Button>
+          </Item>
         </Grid>
         <Grid xs={1.5}>
-          <Item elevation={8}>Friday</Item>
-        </Grid>
+          <Item elevation={8}>
+            <Button href="/friday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black'}}>
+              Friday
+            </Button>
+          </Item>
+        </Grid> 
         <Grid xs={1.5}>
-          <Item elevation={8}>Saturday</Item>
-        </Grid>    
+          <Item elevation={8}>
+            <Button href="/saturday" sx={{ width: '100%', height: '100%', padding: 0, color: 'black'}}>
+              Saturday
+            </Button>
+          </Item>
+        </Grid>   
       </Grid>
     </Box>
   )
