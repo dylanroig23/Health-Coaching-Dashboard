@@ -24,7 +24,7 @@ const PageHeading = ({ headingText }) => {
         }}
       >
         <h1
-            style={ {
+            style={{
                 color: 'white',
                 fontSize: '3rem',
                 paddingLeft: '1rem'
