@@ -2,7 +2,9 @@ import React from 'react'
 
 const Sunday = () => {
   return (
-    <div>Sunday</div>
+    <>
+      <div>Sunday</div>
+    </>
   )
 }
 
