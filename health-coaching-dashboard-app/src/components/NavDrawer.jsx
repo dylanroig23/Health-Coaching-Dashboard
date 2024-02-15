@@ -23,7 +23,7 @@ const NavDrawer = () => {
       sx={{
         borderLeft: `8px solid ${"#548235"}`,
         height: "100%",
-        bgcolor: "#CAF2C9",
+        bgcolor: "#e2f0d9",
       }}
     >
       <nav aria-label="additional nav links">
@@ -79,7 +79,11 @@ const NavDrawer = () => {
         color="inherit"
         aria-label="logo"
         onClick={() => setIsDrawerOpen(true)}
-        sx={{ border: `2px solid ${"#548235"}`, bgcolor: "white" }}
+        sx={{
+          border: `2px solid ${"#548235"}`,
+          bgcolor: "white",
+          "&:hover": { backgroundColor: "#e2f0d9" },
+        }}
       >
         <MenuIcon />
       </IconButton>
