@@ -9,8 +9,12 @@ import Wednesday from "./pages/Wednesday";
 import Thursday from "./pages/Thursday";
 import Friday from "./pages/Friday";
 import Saturday from "./pages/Saturday";
+import AuthorizeUser from "./pages/AuthorizeUser";
+import CallbackHandler from "./pages/CallbackHandler";
 
 function App() {
+  const CLIENT_ID = "YOUR_CLIENT_ID"; //this value comes from Fitbit
+
   return (
     <BrowserRouter>
       <Routes>
@@ -22,6 +26,14 @@ function App() {
         <Route path="/thursday" element={<Thursday />} />
         <Route path="/friday" element={<Friday />} />
         <Route path="/saturday" element={<Saturday />} />
+        <Route
+          path="/authorize"
+          element={<AuthorizeUser CLIENT_ID={CLIENT_ID} />}
+        />
+        <Route
+          path="/callback"
+          element={<CallbackHandler CLIENT_ID={CLIENT_ID} />}
+        />
       </Routes>
     </BrowserRouter>
   );

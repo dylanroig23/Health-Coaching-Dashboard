@@ -59,6 +59,10 @@ export async function exchangeAuthorizationCodeForTokens(
   const getTokensUrl = "https://api.fitbit.com/oauth2/token";
   const grantType = "authorization_code";
 
+  console.log(clientId);
+  console.log(authorizationCode);
+  console.log(codeVerifier);
+
   const url = new URL(getTokensUrl);
   url.searchParams.append("client_id", clientId);
   url.searchParams.append("code", authorizationCode);
