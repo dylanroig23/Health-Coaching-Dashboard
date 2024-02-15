@@ -1,8 +1,8 @@
-//import * as React from 'react';
 import React from "react";
 import { Box } from "@mui/system";
 import NavDrawer from "./NavDrawer";
 
+// The page heading to be used on every page, must pass a headingText prop
 const PageHeading = ({ headingText }) => {
   return (
     <Box

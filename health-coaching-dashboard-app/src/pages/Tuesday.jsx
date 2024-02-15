@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const Tuesday = () => {
-  return (
-    <div>Tuesday</div>
-  )
-}
+const Tuesday = ({ CLIENT_ID }) => {
+  return <div>Tuesday</div>;
+};
 
-export default Tuesday
+export default Tuesday;

@@ -12,8 +12,9 @@ import ContactsIcon from "@mui/icons-material/Contacts";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 
 const NavDrawer = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); //initial state of the NavDrawer is false/closed
 
+  // returns the items that are inside of the NavDrawer
   const sidePanelItems = () => (
     <Box
       p={2}
@@ -71,6 +72,7 @@ const NavDrawer = () => {
     </Box>
   );
 
+  // returns the hamburger icon on the right of the PageHeading with click functionality
   return (
     <>
       <IconButton
