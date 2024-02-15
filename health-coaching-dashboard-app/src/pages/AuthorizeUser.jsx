@@ -70,12 +70,14 @@ const AuthorizeUser = ({ CLIENT_ID }) => {
         accessToken,
       });
 
+      //go to the authorization link
       window.location.href = url;
     } catch (error) {
       console.error("Error generating code verifier and challenge:", error);
     }
   };
 
+  // returns the form for the user to fill out on the page, on submit it runs the handleAuthorizeClick function
   return (
     <>
       <PageHeading headingText={"Add a User"} />

@@ -1,3 +1,4 @@
+// generates the CodeVerifier token
 async function generateRandomCodeVerifier() {
   const codeVerifierLength = 128;
   const characters =
@@ -12,6 +13,7 @@ async function generateRandomCodeVerifier() {
   return codeVerifier;
 }
 
+// generates the CodeChallenge token
 async function generateCodeChallenge(codeVerifier) {
   const encoder = new TextEncoder();
   const data = encoder.encode(codeVerifier);
@@ -20,6 +22,7 @@ async function generateCodeChallenge(codeVerifier) {
   return hashedCodeVerifier;
 }
 
+// encrypts the CodeChallenge to the Base64
 function arrayBufferToBase64Url(buffer) {
   const bytes = new Uint8Array(buffer);
   const binary = String.fromCharCode(...bytes);
@@ -29,6 +32,7 @@ function arrayBufferToBase64Url(buffer) {
     .replace(/=+$/, "");
 }
 
+// the function called to generate and return both the CodeVerifier and CodeChallenge
 export async function generateCodeVerifierAndChallenge() {
   const codeVerifier = await generateRandomCodeVerifier();
   const codeChallenge = await generateCodeChallenge(codeVerifier);
@@ -36,6 +40,7 @@ export async function generateCodeVerifierAndChallenge() {
   return { codeVerifier, codeChallenge };
 }
 
+// builds the initial url that use in the AuthorizeUser.jsx file that redirects the user to Fitbit auth page
 export function buildFitbitAuthorizationUrl(clientId, codeChallenge, scopes) {
   const authorizationUrl = "https://www.fitbit.com/oauth2/authorize";
   const responseType = "code";
@@ -51,6 +56,7 @@ export function buildFitbitAuthorizationUrl(clientId, codeChallenge, scopes) {
   return url.toString();
 }
 
+// exchanges the authorization code for the access and refresh tokens that are needed use Fitbit API
 export async function exchangeAuthorizationCodeForTokens(
   clientId,
   authorizationCode,
@@ -58,10 +64,6 @@ export async function exchangeAuthorizationCodeForTokens(
 ) {
   const getTokensUrl = "https://api.fitbit.com/oauth2/token";
   const grantType = "authorization_code";
-
-  console.log(clientId);
-  console.log(authorizationCode);
-  console.log(codeVerifier);
 
   const url = new URL(getTokensUrl);
   url.searchParams.append("client_id", clientId);
@@ -79,6 +81,6 @@ export async function exchangeAuthorizationCodeForTokens(
 
   const data = await res.json();
 
-  // will need to change this to get the refresh token as well
+  // will need to change this to get the refresh token as well (eventually)
   return data.access_token;
 }

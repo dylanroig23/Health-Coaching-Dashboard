@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 
+// Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -19,10 +20,12 @@ const Item = styled(Paper)(({ theme }) => ({
   border: `1px solid ${"#548235"}`,
 }));
 
-const WeeklyDashboard = () => {
+const WeeklyDashboard = ({ CLIENT_ID }) => {
   const navigate = useNavigate();
+  // the user data that is initially fetched on launch
   const [userData, setUserData] = useState(null);
 
+  // fetches data from the json server, just gets the entire users table
   const fetchData = async () => {
     try {
       const userResponse = await fetch("http://localhost:5000/users");
@@ -36,10 +39,12 @@ const WeeklyDashboard = () => {
     }
   };
 
+  // runs when the WeeklyDashboard mounts, just calls fetchData()
   useEffect(() => {
     fetchData();
-  }, []); // Empty dependency array ensures this effect runs once on mount
+  }, []); // Empty dependency array ensures this effect runs once on mount...I believe
 
+  // if user data exists in the table then display the grid with the graphs
   if (userData) {
     return (
       <>
@@ -78,6 +83,7 @@ const WeeklyDashboard = () => {
       </>
     );
   } else {
+    // if no users exist then prompt the user to add a user
     return (
       <>
         <PageHeading headingText="Please Add a User" />;
