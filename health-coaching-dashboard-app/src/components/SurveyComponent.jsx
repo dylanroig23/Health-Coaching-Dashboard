@@ -9,13 +9,6 @@ function SurveyComponent() {
     survey.onComplete.add((sender, options) => {
         console.log(JSON.stringify(sender.data, null, 3));
     });
-    survey.data = {
-        "nps-score": 9,
-        "promoter-features": [
-            "performance",
-            "ui"
-        ]
-    };
     return (<Survey model={survey} />);
 }
 
