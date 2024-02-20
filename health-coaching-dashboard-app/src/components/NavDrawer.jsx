@@ -42,7 +42,7 @@ const NavDrawer = () => {
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton>
+            <ListItemButton href="/redcap">
               <ListItemIcon>
                 <EditNoteIcon style={{ fontSize: 42, color: "#548235" }} />
               </ListItemIcon>
