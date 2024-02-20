@@ -14,7 +14,7 @@ import CallbackHandler from "./pages/CallbackHandler";
 import Redcap from "./pages/Redcap";
 
 function App() {
-  const CLIENT_ID = "23RWFT"; //this value comes from Fitbit (we will want to change this to an environment variable?)
+  const CLIENT_ID = "CLIENT_ID"; //this value comes from Fitbit (we will want to change this to an environment variable?)
 
   return (
     <BrowserRouter>
