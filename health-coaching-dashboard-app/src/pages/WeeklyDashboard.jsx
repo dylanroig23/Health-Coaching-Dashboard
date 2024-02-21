@@ -9,6 +9,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import WeeklyHoursOfSleepChart from "../components/WeeklyHoursOfSleepChart";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
@@ -54,7 +55,10 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
               <Grid xs={4}>
-                <Item elevation={4}>Hours of Sleep</Item>
+                <Item elevation={4}>
+                  Hours of Sleep
+                  <WeeklyHoursOfSleepChart />
+                </Item>
               </Grid>
               <Grid xs={4}>
                 <Item elevation={4}>Zone Minutes</Item>
