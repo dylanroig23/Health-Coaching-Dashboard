@@ -11,9 +11,10 @@ import Friday from "./pages/Friday";
 import Saturday from "./pages/Saturday";
 import AuthorizeUser from "./pages/AuthorizeUser";
 import CallbackHandler from "./pages/CallbackHandler";
+import Redcap from "./pages/Redcap";
 
 function App() {
-  const CLIENT_ID = "YOUR_CLIENT_ID"; //this value comes from Fitbit (we will want to change this to an environment variable?)
+  const CLIENT_ID = "CLIENT_ID"; //this value comes from Fitbit (we will want to change this to an environment variable?)
 
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/thursday" element={<Thursday CLIENT_ID={CLIENT_ID} />} />
         <Route path="/friday" element={<Friday CLIENT_ID={CLIENT_ID} />} />
         <Route path="/saturday" element={<Saturday CLIENT_ID={CLIENT_ID} />} />
+        <Route path="/redcap" element={<Redcap CLIENT_ID={CLIENT_ID} />} />
         <Route
           path="/authorize"
           element={<AuthorizeUser CLIENT_ID={CLIENT_ID} />}
