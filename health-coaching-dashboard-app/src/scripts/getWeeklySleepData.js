@@ -40,8 +40,6 @@ const fetchWeeklySleepData = async (currentUser) => {
 
       today = formatDate(currentDateString);
       sevenDaysAgo = formatDate(sevenDaysAgoDateString);
-      // console.log(today);
-      // console.log(sevenDaysAgo);
 
       // Get the sleep data from the past week
       const fitbitResponse = await fetch(
@@ -57,8 +55,6 @@ const fetchWeeklySleepData = async (currentUser) => {
 
       const fitbitData = await fitbitResponse.json();
 
-      //console.log(fitbitData);
-
       return fitbitData;
     }
   } catch (error) {
@@ -72,48 +68,37 @@ export const getWeeklySleepData = async (currentUser) => {
   if (sleepData != null) {
     const formattedSleepData = [
       {
-        day: "Sunday",
+        day: "Sun.",
         duration: 0,
       },
       {
-        day: "Monday",
+        day: "Mon.",
         duration: 0,
       },
       {
-        day: "Tuesday",
+        day: "Tues.",
         duration: 0,
       },
       {
-        day: "Wednesday",
+        day: "Wed.",
         duration: 0,
       },
       {
-        day: "Thursday",
+        day: "Thurs.",
         duration: 0,
       },
       {
-        day: "Friday",
+        day: "Fri.",
         duration: 0,
       },
       {
-        day: "Saturday",
+        day: "Sat.",
         duration: 0,
       },
-    ];
-
-    const daysOfWeek = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
     ];
 
     sleepData.sleep.reverse().forEach((entry) => {
       const date = new Date(entry.dateOfSleep);
-      const dayOfWeek = daysOfWeek[date.getDay()];
 
       formattedSleepData[date.getDay()].duration += entry.duration / 3600000;
     });

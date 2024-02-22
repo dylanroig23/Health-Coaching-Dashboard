@@ -16,8 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
+  color: "#548235",
   border: `1px solid ${"#548235"}`,
 }));
 
@@ -56,7 +55,9 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
             <Grid container spacing={2}>
               <Grid xs={4}>
                 <Item elevation={4}>
-                  Hours of Sleep
+                  <h1 style={{ padding: 5, paddingLeft: 20 }}>
+                    Hours of Sleep
+                  </h1>
                   <WeeklyHoursOfSleepChart />
                 </Item>
               </Grid>

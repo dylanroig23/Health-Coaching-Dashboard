@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "@mui/material/Container";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklySleepData } from "../scripts/getWeeklySleepData";
 
@@ -31,15 +21,15 @@ const WeeklyHoursOfSleepChart = () => {
   }, []);
 
   return (
-    <div style={{ margin: 0 }}>
-      <BarChart width={500} height={300} data={chartSleepData}>
+    <>
+      <BarChart width={450} height={300} data={chartSleepData} margin={0}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="day" />
         <YAxis />
         <Tooltip />
-        <Bar dataKey="duration" fill="#8884d8" />
+        <Bar dataKey="duration" fill="#0389ad" />
       </BarChart>
-    </div>
+    </>
   );
 };
 
