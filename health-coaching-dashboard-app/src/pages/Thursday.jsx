@@ -51,7 +51,7 @@ const DailyDashboard = ({ CLIENT_ID }) => {
         <DailyNavBar />
         <Container maxWidth="xl">
           <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
+          <Grid container spacing={2}>
               <Grid xs={4}>
                 <Item elevation={4}>Hours of Sleep</Item>
               </Grid>
@@ -61,20 +61,14 @@ const DailyDashboard = ({ CLIENT_ID }) => {
               <Grid xs={4}>
                 <Item elevation={4}>Sleep vs Zone</Item>
               </Grid>
-              <Grid xs={4}>
+              <Grid xs={5}>
                 <Item elevation={4}>Steps</Item>
               </Grid>
-              <Grid xs={4}>
+              <Grid xs={5}>
                 <Item elevation={4}>Servings of Fruits and Vegetables</Item>
               </Grid>
-              <Grid xs={4}>
+              <Grid xs={2}>
                 <Item elevation={4}>Healthy Meals</Item>
-              </Grid>
-              <Grid xs={4}>
-                <Item elevation={4}>Activity Completion</Item>
-              </Grid>
-              <Grid xs={4}>
-                <Item elevation={4}>User's Weekly SMART Goals</Item>
               </Grid>
             </Grid>
           </Box>
