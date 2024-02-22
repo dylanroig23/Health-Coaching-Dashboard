@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import Button from "@mui/material/Button";
-import { NavLink } from "react-router-dom";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
@@ -19,14 +18,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 // Styling for the MUI Component: Paper. This allows the use of the <DailyOverviewTab> tag below
 const JumpWeekDash = styled(Button)(() => ({
-    width: "100%",
-    height: "100%",
-    padding: 0,
-    color: "black",
-    "&:hover": {
-      color: "grey",
-    },
-  }));
+  width: "100%",
+  height: "100%",
+  padding: 0,
+  color: "black",
+  "&:hover": {
+    color: "grey",
+  },
+}));
 
 // Styling for the MUI Component: Button. This allows the use of the <Day> tag below
 const Day = styled(Button)(() => ({
@@ -45,7 +44,10 @@ const DailyNavBar = () => {
     <Box>
       <Grid container spacing={2} justifyContent="center" padding="1rem">
         <Grid xs={1.5}>
-          <JumpWeekDash href="/"> <u>Return</u></JumpWeekDash>
+          <JumpWeekDash href="/">
+            {" "}
+            <u>Return</u>
+          </JumpWeekDash>
         </Grid>
         <Grid xs={1.5}>
           <Item elevation={8}>

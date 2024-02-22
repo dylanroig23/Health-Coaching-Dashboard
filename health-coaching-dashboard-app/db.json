@@ -1,13 +1,3 @@
 {
-  "users": [
-    {
-      "id": "1bd5",
-      "firstName": "Will ",
-      "lastName": "Liu",
-      "username": ".",
-      "codeVerifier": "nR166F5sR1BRrNidq3XWeiHp7PZwYj2D-I52.SUAcZo3Ul~x.uNgleVY7Nn_pcW3K9s3-ILgvESQ6J5JzCV5lOU3RhZ0~azTNITQ17FV37o_EE0pg6okunUQ9ieoa-XN",
-      "codeChallenge": "EcJ8imrIBi_YyLcfwIbbyjajl8hLphDjvaIqL_sgVr4",
-      "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1JXTkwiLCJzdWIiOiJCWFM2WEsiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJzZXQgcm94eSBycHJvIHJudXQgcnNsZSByYWN0IHJsb2MgcnJlcyByd2VpIHJociBydGVtIiwiZXhwIjoxNzA4NDI0ODU1LCJpYXQiOjE3MDgzOTYwNTV9.mrZlXixJe4kbPy3tqloI5BH-p0ggK6cYRlz7eLiS0iA"
-    }
-  ]
+  "users": []
 }
