@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import WeeklyHoursOfSleepChart from "../components/WeeklyHoursOfSleepChart";
+import WeeklyZoneMinutesChart from "../components/WeeklyZoneMinutesChart";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
@@ -62,7 +63,10 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
                 </Item>
               </Grid>
               <Grid xs={4}>
-                <Item elevation={4}>Zone Minutes</Item>
+                <Item elevation={4}>
+                  <h1 style={{ padding: 5, paddingLeft: 20 }}>Zone Minutes</h1>
+                  <WeeklyZoneMinutesChart />
+                </Item>
               </Grid>
               <Grid xs={4}>
                 <Item elevation={4}>Sleep vs Zone</Item>
