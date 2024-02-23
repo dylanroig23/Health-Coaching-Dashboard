@@ -103,7 +103,6 @@ export const getWeeklySleepData = async (currentUser) => {
       formattedSleepData[date.getDay()].duration += entry.duration / 3600000;
     });
 
-    console.log(formattedSleepData);
     return formattedSleepData;
   } else {
     console.log("sleepData was null");
