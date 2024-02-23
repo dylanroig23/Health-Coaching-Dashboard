@@ -1,7 +1,7 @@
 /*
-    These functions handle fetching the sleep data of the user
+    These functions handle fetching the zone data of the user
     and returning the data in the format that can be used by the
-    sleep graph to display the data.
+    zone graph to display the data.
 */
 function formatDate(inputDate) {
   // Parse the input date string
@@ -21,7 +21,7 @@ function formatDate(inputDate) {
   return formattedDate;
 }
 
-const fetchWeeklyZoneMinutesData = async (currentUser) => {
+export const fetchWeeklyZoneMinutesData = async (currentUser) => {
   try {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)

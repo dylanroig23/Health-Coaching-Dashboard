@@ -21,7 +21,7 @@ function formatDate(inputDate) {
   return formattedDate;
 }
 
-const fetchWeeklySleepData = async (currentUser) => {
+export const fetchWeeklySleepData = async (currentUser) => {
   try {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)
