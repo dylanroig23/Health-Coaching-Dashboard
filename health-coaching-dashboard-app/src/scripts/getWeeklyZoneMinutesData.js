@@ -21,7 +21,7 @@ function formatDate(inputDate) {
   return formattedDate;
 }
 
-export const fetchWeeklyZoneMinutesData = async (currentUser) => {
+const fetchWeeklyZoneMinutesData = async (currentUser) => {
   try {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)
@@ -33,7 +33,7 @@ export const fetchWeeklyZoneMinutesData = async (currentUser) => {
 
       // Calculate the date 7 days ago
       let sevenDaysAgo = new Date();
-      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6);
       const sevenDaysAgoDateString = sevenDaysAgo
         .toLocaleString("en-US", options)
         .split(",")[0];
@@ -54,7 +54,7 @@ export const fetchWeeklyZoneMinutesData = async (currentUser) => {
       );
 
       const fitbitData = await fitbitResponse.json();
-
+      console.log(fitbitData);
       return fitbitData;
     }
   } catch (error) {
@@ -100,7 +100,7 @@ export const getWeeklyZoneMinutesData = async (currentUser) => {
     zoneData["activities-active-zone-minutes"].reverse().forEach((entry) => {
       const date = new Date(entry.dateTime);
 
-      formattedZoneData[date.getDay()].duration +=
+      formattedZoneData[(date.getDay() + 1) % 7].duration +=
         entry.value.activeZoneMinutes;
     });
 

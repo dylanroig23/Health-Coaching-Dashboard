@@ -1,9 +1,9 @@
-import { fetchWeeklySleepData } from "./getWeeklySleepData";
-import { fetchWeeklyZoneMinutesData } from "./getWeeklyZoneMinutesData";
+import { getWeeklySleepData } from "./getWeeklySleepData";
+import { getWeeklyZoneMinutesData } from "./getWeeklyZoneMinutesData";
 
 export const getWeeklyZonevsSleepData = async (currentUser) => {
-  const zoneData = await fetchWeeklyZoneMinutesData(currentUser);
-  const sleepData = await fetchWeeklySleepData(currentUser);
+  const zoneData = await getWeeklyZoneMinutesData(currentUser);
+  const sleepData = await getWeeklySleepData(currentUser);
   if (zoneData != null && sleepData != null) {
     const formattedSleepvsZoneData = [
       {
@@ -43,18 +43,10 @@ export const getWeeklyZonevsSleepData = async (currentUser) => {
       },
     ];
 
-    zoneData["activities-active-zone-minutes"].reverse().forEach((entry) => {
-      const date = new Date(entry.dateTime);
-
-      formattedSleepvsZoneData[date.getDay()].zone +=
-        entry.value.activeZoneMinutes / 60;
-    });
-
-    sleepData.sleep.reverse().forEach((entry) => {
-      const date = new Date(entry.dateOfSleep);
-
-      formattedSleepvsZoneData[date.getDay()].sleep += entry.duration / 3600000;
-    });
+    for (let i = 0; i < 7; i++) {
+      formattedSleepvsZoneData[i].sleep = sleepData[i].duration;
+      formattedSleepvsZoneData[i].zone = zoneData[i].duration;
+    }
 
     return formattedSleepvsZoneData;
   } else {
