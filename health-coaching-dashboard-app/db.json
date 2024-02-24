@@ -1,3 +1,13 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "15a1",
+      "firstName": "Dylan",
+      "lastName": "Roig",
+      "username": "-",
+      "codeVerifier": "GiFpW~de1xc9PVlF6bPy~jPMAJuKzDMHGVr_i-KRUB1pzkloxxLtmVLdHquGDhmazYkvUA4tcBJe5ZugkdC5g8Vshw.ED2FyxaT7_VlY3sA8bsVuh_T7Ldx3zCO10LCL",
+      "codeChallenge": "wRpMQdSf2pX4cP-xTWN7ReVvh_taAHt4fbm6e_riB0A",
+      "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1JXTkwiLCJzdWIiOiJCWFM2WEsiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJzZXQgcm94eSBycHJvIHJudXQgcnNsZSByYWN0IHJyZXMgcmxvYyByd2VpIHJociBydGVtIiwiZXhwIjoxNzA4ODM3ODkzLCJpYXQiOjE3MDg4MDkwOTN9.NU9MxI2dypFo8tC3TpUzQEClpUVYVSOP3rDJWzNQSyU"
+    }
+  ]
 }

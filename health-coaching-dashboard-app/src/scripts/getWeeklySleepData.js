@@ -21,7 +21,7 @@ function formatDate(inputDate) {
   return formattedDate;
 }
 
-export const fetchWeeklySleepData = async (currentUser) => {
+const fetchWeeklySleepData = async (currentUser) => {
   try {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)
@@ -33,7 +33,7 @@ export const fetchWeeklySleepData = async (currentUser) => {
 
       // Calculate the date 7 days ago
       let sevenDaysAgo = new Date();
-      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6);
       const sevenDaysAgoDateString = sevenDaysAgo
         .toLocaleString("en-US", options)
         .split(",")[0];
@@ -54,7 +54,6 @@ export const fetchWeeklySleepData = async (currentUser) => {
       );
 
       const fitbitData = await fitbitResponse.json();
-
       return fitbitData;
     }
   } catch (error) {
@@ -99,8 +98,9 @@ export const getWeeklySleepData = async (currentUser) => {
 
     sleepData.sleep.reverse().forEach((entry) => {
       const date = new Date(entry.dateOfSleep);
-
-      formattedSleepData[date.getDay()].duration += entry.duration / 3600000;
+      formattedSleepData[(date.getDay() + 1) % 7].duration += Math.floor(
+        entry.duration / 3600000
+      );
     });
 
     return formattedSleepData;

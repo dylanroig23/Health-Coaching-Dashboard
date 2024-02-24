@@ -1,6 +1,6 @@
 import { getFormattedDate } from "./getFormattedDate";
 
-export const fetchWeeklyStepsData = async (currentUser) => {
+const fetchWeeklyStepsData = async (currentUser) => {
   try {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)
@@ -12,7 +12,7 @@ export const fetchWeeklyStepsData = async (currentUser) => {
 
       // Calculate the date 7 days ago
       let sevenDaysAgo = new Date();
-      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6);
       const sevenDaysAgoDateString = sevenDaysAgo
         .toLocaleString("en-US", options)
         .split(",")[0];
@@ -33,7 +33,6 @@ export const fetchWeeklyStepsData = async (currentUser) => {
       );
 
       const fitbitData = await fitbitResponse.json();
-
       return fitbitData;
     }
   } catch (error) {
@@ -76,10 +75,10 @@ export const getWeeklyStepsData = async (currentUser) => {
       },
     ];
 
-    stepsData["activities-steps"].reverse().forEach((entry) => {
+    stepsData["activities-steps"].forEach((entry) => {
       const date = new Date(entry.dateTime);
 
-      formattedStepsData[date.getDay()].steps += entry.value;
+      formattedStepsData[(date.getDay() + 1) % 7].steps += Number(entry.value); //potential temporary fix on day shift issue
     });
 
     return formattedStepsData;
