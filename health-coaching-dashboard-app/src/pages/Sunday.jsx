@@ -1,9 +1,10 @@
 import React from "react";
+import DailyDashboard from "../components/DailyDashboard";
 
 const Sunday = ({ CLIENT_ID }) => {
   return (
     <>
-      <div>Sunday</div>
+      <DailyDashboard headingText={"Sunday Overview"} CLIENT_ID={CLIENT_ID} />
     </>
   );
 };
