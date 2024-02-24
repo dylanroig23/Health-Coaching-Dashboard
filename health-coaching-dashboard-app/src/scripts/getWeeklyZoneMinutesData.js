@@ -54,7 +54,6 @@ const fetchWeeklyZoneMinutesData = async (currentUser) => {
       );
 
       const fitbitData = await fitbitResponse.json();
-      console.log(fitbitData);
       return fitbitData;
     }
   } catch (error) {
