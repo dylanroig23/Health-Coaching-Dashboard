@@ -30,7 +30,7 @@ const NavDrawer = () => {
       <nav aria-label="additional nav links">
         <List sx={{ color: "#548235" }}>
           <ListItem>
-            <ListItemButton>
+            <ListItemButton href="/contact-info">
               <ListItemIcon>
                 <ContactsIcon style={{ fontSize: 32, color: "#548235" }} />
               </ListItemIcon>
