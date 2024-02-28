@@ -1,4 +1,4 @@
-export const json = {
+export const redcapJson = {
     "completedHtmlOnCondition": [
      {
       "expression": "{weeknum} >= 0",
