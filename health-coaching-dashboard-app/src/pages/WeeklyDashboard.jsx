@@ -33,6 +33,7 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
     try {
       const userResponse = await fetch("http://localhost:5000/users");
       const userData = await userResponse.json();
+      console.log(userData);
 
       if (userData && userData.length > 0) {
         setUserData(userData);
@@ -51,7 +52,9 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
   if (userData) {
     return (
       <>
-        <PageHeading headingText="Welcome to User's Weekly Overview" />
+        <PageHeading
+          headingText={`Welcome to ${userData[0].firstName}'s Weekly Overview`}
+        />
         <NavBar />
         <Container maxWidth="xl">
           <Box sx={{ flexGrow: 1 }}>
