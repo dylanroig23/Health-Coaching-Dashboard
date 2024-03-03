@@ -13,7 +13,7 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import WeekSelectorDropdown from "./WeekSelectorDropdown";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 
-const NavDrawer = () => {
+const NavDrawer = ({ userData }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); //initial state of the NavDrawer is false/closed
 
   // returns the items that are inside of the NavDrawer
@@ -77,7 +77,7 @@ const NavDrawer = () => {
               <ListItemText
                 primary={
                   <Typography variant="button">
-                    <WeekSelectorDropdown />
+                    <WeekSelectorDropdown userData={userData} />
                   </Typography>
                 }
               />

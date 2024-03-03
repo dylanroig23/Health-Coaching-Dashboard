@@ -54,6 +54,8 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
       <>
         <PageHeading
           headingText={`Welcome to ${userData[0].firstName}'s Weekly Overview`}
+          userData={userData}
+          fromWeekly={true}
         />
         <NavBar />
         <Container maxWidth="xl">

@@ -26,6 +26,8 @@ const AuthorizeUser = ({ CLIENT_ID }) => {
   // eslint-disable-next-line
   const [accessToken, setAccessToken] = useState("");
 
+  const userStartDate = new Date(2024, 1, 15);
+
   //adds the user to the db.json, this is done by the json-server
   const addUser = async (user) => {
     await fetch(`http://localhost:5000/users`, {
@@ -67,6 +69,7 @@ const AuthorizeUser = ({ CLIENT_ID }) => {
         username,
         codeVerifier,
         codeChallenge,
+        startDate: userStartDate,
         accessToken,
       });
 
