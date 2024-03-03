@@ -7,9 +7,9 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useState, useEffect } from "react";
-import DailySleepGraph from "./DailySleepGraph";
-import DailyStepsGraph from "./DailyStepsGraph";
-import DailyZoneGraph from "./DailyZoneGraph";
+import ZoneChart from "./ZoneChart";
+import SleepChart from "./SleepChart";
+import StepsChart from "./StepsChart";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
@@ -58,7 +58,7 @@ const DailyDashboard = ({ headingText, CLIENT_ID }) => {
               <h1 style={{ padding: 5, paddingLeft: 20 }}>
                 Hours of Sleep
               </h1>
-              <DailySleepGraph dayOverview={headingText}/>
+              <SleepChart dayOverview={headingText}/>
               </Item>
             </Grid>
             <Grid xs={4}>
@@ -66,7 +66,7 @@ const DailyDashboard = ({ headingText, CLIENT_ID }) => {
               <h1 style={{ padding: 5, paddingLeft: 20 }}>
                   Zone Minutes
                 </h1>
-                <DailyZoneGraph dayOverview={headingText}/>
+                <ZoneChart dayOverview={headingText}/>
               </Item>
             </Grid>
             <Grid xs={4}>
@@ -77,7 +77,7 @@ const DailyDashboard = ({ headingText, CLIENT_ID }) => {
               <h1 style={{ padding: 5, paddingLeft: 20 }}>
                   Daily Steps
                 </h1>
-                <DailyStepsGraph dayOverview={headingText}/>
+                <StepsChart dayOverview={headingText}/>
               </Item>
             </Grid>
             <Grid xs={5}>

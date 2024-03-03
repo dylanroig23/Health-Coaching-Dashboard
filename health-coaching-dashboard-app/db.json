@@ -1,13 +1,4 @@
 {
   "users": [
-    {
-      "id": "25d2",
-      "firstName": "aplle",
-      "lastName": "joe",
-      "username": "Mom",
-      "codeVerifier": "~faN7txDr28yt~f9gUkgytoA.UoBgcUme~hCuSw9bHHphU1oTWU6hxvt4.BwkNgFMn0GashYWmURV.-xOYf1Z5lMtyvLYwWtV3eOHD6ejIC2MQ7nwn_a2C.gSx-A5yVn",
-      "codeChallenge": "5nanYolhMDCESblKnrFrX2z2qyNvZN3Vfr2EjthbVt8",
-      "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1JXRlQiLCJzdWIiOiJCWFM2WEsiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJzZXQgcm94eSBybnV0IHJwcm8gcnNsZSByYWN0IHJyZXMgcmxvYyByd2VpIHJociBydGVtIiwiZXhwIjoxNzA5MDMzNzQ0LCJpYXQiOjE3MDkwMDQ5NDR9.iRbsFHvLMFYLPY1L6vJf2cC0oszzKF0rHAIPHPJdl-w"
-    }
   ]
 }

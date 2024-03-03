@@ -1,21 +1,30 @@
-import { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklyZoneMinutesData } from "../scripts/getWeeklyZoneMinutesData";
 
-const currUser = await getCurrentUser();
-const weeklyZoneData = await getWeeklyZoneMinutesData(currUser);
+const ZoneChart = (dayOverview) => {
+    const [zoneData, setNewZoneData] = useState([]);
 
-class DailyZoneGraph extends Component {
-  constructor(props) {
-    super(props);
-    const dayOverview = this.props.dayOverview;
-    const l = ['Sunday Overview', 'Monday Overview', 'Tuesday Overview', 'Wednesday Overview', 'Thursday Overview', 'Friday Overview', 'Saturday Overview'];
-    const dayIndex = l.indexOf(dayOverview);
-    this.state = {
-    
-      series: [weeklyZoneData[dayIndex].duration * 100 / 22],
-      options: {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const currUser = await getCurrentUser();
+                const weeklyZoneData = await getWeeklyZoneMinutesData(currUser);
+                setNewZoneData(weeklyZoneData);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    if (zoneData.length > 0) {
+      const l = ['Sunday Overview', 'Monday Overview', 'Tuesday Overview', 'Wednesday Overview', 'Thursday Overview', 'Friday Overview', 'Saturday Overview'];
+      const dayIndex = l.indexOf(dayOverview.dayOverview);
+      var c = {
+        series: [zoneData[dayIndex].duration * 100 / 22],
+        options: {
         chart: {
           height: 350,
           type: 'radialBar',
@@ -58,7 +67,7 @@ class DailyZoneGraph extends Component {
               },
               value: {
                 formatter: function(val) {
-                  return parseInt(weeklyZoneData[dayIndex].duration);
+                  return parseInt(zoneData[dayIndex].duration);
                 },
                 color: '#111',
                 fontSize: '36px',
@@ -77,24 +86,18 @@ class DailyZoneGraph extends Component {
         labels: ['Minutes'],
         offsetY: 70,
       },
-    
-    };
-  }
-
-
-
-  render() {
-    return (
-      <div>
-        <div id="card">
-          <div id="chart">
-          <Chart options={this.state.options} series={this.state.series} type="radialBar" height={350} />
-        </div>
-        </div>
-        <div id="html-dist"></div>
+      };
+      return (
+        <div>
+          <div id="card">
+              <div id="chart">
+              <Chart options={c.options} series={c.series} type="radialBar" height={350} />
+              </div>
+          </div>
+          <div id="html-dist"></div>
       </div>
-    );
-  }
+      )
+    }
 }
 
-export default DailyZoneGraph;
+export default ZoneChart
