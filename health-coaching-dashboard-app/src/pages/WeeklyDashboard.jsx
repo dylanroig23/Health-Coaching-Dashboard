@@ -33,7 +33,6 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
     try {
       const userResponse = await fetch("http://localhost:5000/users");
       const userData = await userResponse.json();
-      console.log(userData);
 
       if (userData && userData.length > 0) {
         setUserData(userData);
