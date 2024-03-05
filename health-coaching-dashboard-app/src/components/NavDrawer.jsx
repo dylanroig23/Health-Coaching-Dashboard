@@ -56,7 +56,7 @@ const NavDrawer = ({ userData }) => {
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton>
+            <ListItemButton href="/smart-goals">
               <ListItemIcon>
                 <EmojiPeopleIcon style={{ fontSize: 42, color: "#548235" }} />
               </ListItemIcon>
