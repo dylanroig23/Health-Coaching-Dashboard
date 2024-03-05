@@ -26,7 +26,9 @@ const PageHeading = ({ headingText, userData, fromWeekly }) => {
             paddingLeft: "1rem",
           }}
         >
-          {headingText || "Pass a prop to this component to change header"}
+          {headingText +
+            ` (Week of ${userData[0].dateOfInterest.substring(5)})` ||
+            "Pass a prop to this component to change header"}
         </h1>
         <NavDrawer userData={userData} />
       </Box>
