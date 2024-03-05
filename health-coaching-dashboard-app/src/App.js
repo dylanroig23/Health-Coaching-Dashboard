@@ -13,9 +13,10 @@ import AuthorizeUser from "./pages/AuthorizeUser";
 import CallbackHandler from "./pages/CallbackHandler";
 import Redcap from "./pages/Redcap";
 import ContactInfo from "./pages/ContactInfo";
+import SmartGoals from "./pages/SmartGoals";
 
 function App() {
-  const CLIENT_ID = "CLIENT_ID"; //this value comes from Fitbit (we will want to change this to an environment variable?)
+  const CLIENT_ID = "23RWNL"; //this value comes from Fitbit (we will want to change this to an environment variable?)
 
   return (
     <BrowserRouter>
@@ -35,6 +36,10 @@ function App() {
         <Route
           path="/contact-info"
           element={<ContactInfo CLIENT_ID={CLIENT_ID} />}
+        />
+        <Route
+          path="/smart-goals"
+          element={<SmartGoals CLIENT_ID={CLIENT_ID} />}
         />
         <Route
           path="/authorize"
