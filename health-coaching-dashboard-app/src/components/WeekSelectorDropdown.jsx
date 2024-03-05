@@ -10,7 +10,23 @@ const WeekSelectorDropdown = ({ userData }) => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+
+  const handleClose = async (updatedDate) => {
+    const updatedUserData = { ...userData[0], dateOfInterest: updatedDate };
+
+    await fetch(`http://localhost:5000/users/${userData[0].id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(updatedUserData),
+    });
+
+    setAnchorEl(null);
+    window.location.reload();
+  };
+
+  const handleNoClick = () => {
     setAnchorEl(null);
   };
 
@@ -29,9 +45,9 @@ const WeekSelectorDropdown = ({ userData }) => {
       >
         Week Selector
       </Button>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+      <Menu anchorEl={anchorEl} open={open} onClose={handleNoClick}>
         {weeksArray.map((index, count) => (
-          <MenuItem key={index} onClick={handleClose}>
+          <MenuItem key={index} onClick={() => handleClose(index)}>
             <p>Week {String(count + 1)}</p>
           </MenuItem>
         ))}

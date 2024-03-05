@@ -10,6 +10,7 @@ const fetchWeeklyZoneMinutesData = async (currentUser, dateOfInterest) => {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)
       let startDate = new Date(dateOfInterest);
+      startDate.setDate(startDate.getDate() + 1); // temporary fix
       const options = { timeZone: "America/New_York" };
       const startDateString = startDate
         .toLocaleString("en-US", options)

@@ -27,7 +27,7 @@ const AuthorizeUser = ({ CLIENT_ID }) => {
   const [accessToken, setAccessToken] = useState("");
 
   const userStartDate = new Date(2024, 1, 15);
-  const dateOfInterest = new Date(2024, 1, 15);
+  const dateOfInterest = "2024-02-15"; //temporary fix
 
   //adds the user to the db.json, this is done by the json-server
   const addUser = async (user) => {

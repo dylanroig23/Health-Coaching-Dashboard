@@ -10,6 +10,7 @@ const fetchWeeklySleepData = async (currentUser, dateOfInterest) => {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)
       let startDate = new Date(dateOfInterest);
+      startDate.setDate(startDate.getDate() + 1); // temporary fix
       const options = { timeZone: "America/New_York" };
       const startDateString = startDate
         .toLocaleString("en-US", options)
@@ -23,9 +24,9 @@ const fetchWeeklySleepData = async (currentUser, dateOfInterest) => {
         .split(",")[0];
 
       startDate = getFormattedDate(startDateString);
-      //console.log("startDate after format: " + startDate);
+      // console.log("startDate after format: " + startDate);
       endDate = getFormattedDate(endDateString);
-      //console.log("endDateString after format: " + endDate);
+      // console.log("endDateString after format: " + endDate);
 
       // Get the sleep data from the past week
       const fitbitResponse = await fetch(
@@ -40,7 +41,7 @@ const fetchWeeklySleepData = async (currentUser, dateOfInterest) => {
       );
 
       const fitbitData = await fitbitResponse.json();
-      //console.log(fitbitData);
+      // console.log(fitbitData);
       return fitbitData;
     }
   } catch (error) {
