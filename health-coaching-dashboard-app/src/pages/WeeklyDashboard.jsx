@@ -51,7 +51,11 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
   if (userData) {
     return (
       <>
-        <PageHeading headingText="Welcome to User's Weekly Overview" />
+        <PageHeading
+          headingText={`Welcome to ${userData[0].firstName}'s Weekly Overview`}
+          userData={userData}
+          fromWeekly={true}
+        />
         <NavBar />
         <Container maxWidth="xl">
           <Box sx={{ flexGrow: 1 }}>

@@ -1,28 +1,31 @@
 import { getFormattedDate } from "./getFormattedDate";
 
-const fetchWeeklyStepsData = async (currentUser) => {
+const fetchWeeklyStepsData = async (currentUser, dateOfInterest) => {
   try {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)
-      let today = new Date();
+      let startDate = new Date(dateOfInterest);
+      startDate.setDate(startDate.getDate() + 1); // temporary fix
       const options = { timeZone: "America/New_York" };
-      const currentDateString = today
+      const startDateString = startDate
         .toLocaleString("en-US", options)
         .split(",")[0];
 
-      // Calculate the date 7 days ago
-      let sevenDaysAgo = new Date();
-      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6);
-      const sevenDaysAgoDateString = sevenDaysAgo
+      // Calculate the end date
+      let endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + 6);
+      const endDateString = endDate
         .toLocaleString("en-US", options)
         .split(",")[0];
 
-      today = getFormattedDate(currentDateString);
-      sevenDaysAgo = getFormattedDate(sevenDaysAgoDateString);
+      startDate = getFormattedDate(startDateString);
+      // console.log("startDate after format: " + startDate);
+      endDate = getFormattedDate(endDateString);
+      // console.log("endDateString after format: " + endDate);
 
       // Get the sleep data from the past week
       const fitbitResponse = await fetch(
-        `https://api.fitbit.com/1/user/-/activities/steps/date/${sevenDaysAgo}/${today}.json`,
+        `https://api.fitbit.com/1/user/-/activities/steps/date/${startDate}/${endDate}.json`,
         {
           method: "GET",
           headers: {
@@ -33,6 +36,7 @@ const fetchWeeklyStepsData = async (currentUser) => {
       );
 
       const fitbitData = await fitbitResponse.json();
+      // console.log(fitbitData);
       return fitbitData;
     }
   } catch (error) {
@@ -42,7 +46,10 @@ const fetchWeeklyStepsData = async (currentUser) => {
 };
 
 export const getWeeklyStepsData = async (currentUser) => {
-  const stepsData = await fetchWeeklyStepsData(currentUser);
+  const stepsData = await fetchWeeklyStepsData(
+    currentUser,
+    currentUser.dateOfInterest
+  );
   if (stepsData != null) {
     const formattedStepsData = [
       {

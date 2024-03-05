@@ -3,47 +3,34 @@
     and returning the data in the format that can be used by the
     sleep graph to display the data.
 */
-function formatDate(inputDate) {
-  // Parse the input date string
-  var parts = inputDate.split("/");
-  var day = parts[1];
-  var month = parts[0];
-  var year = parts[2];
+import { getFormattedDate } from "./getFormattedDate";
 
-  // Format the date as YYYY-MM-DD
-  var formattedDate =
-    year +
-    "-" +
-    (month.length === 1 ? "0" + month : month) +
-    "-" +
-    (day.length === 1 ? "0" + day : day);
-
-  return formattedDate;
-}
-
-const fetchWeeklySleepData = async (currentUser) => {
+const fetchWeeklySleepData = async (currentUser, dateOfInterest) => {
   try {
     if (currentUser) {
       // Get current date in Eastern Standard Time (New York)
-      let today = new Date();
+      let startDate = new Date(dateOfInterest);
+      startDate.setDate(startDate.getDate() + 1); // temporary fix
       const options = { timeZone: "America/New_York" };
-      const currentDateString = today
+      const startDateString = startDate
         .toLocaleString("en-US", options)
         .split(",")[0];
 
-      // Calculate the date 7 days ago
-      let sevenDaysAgo = new Date();
-      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6);
-      const sevenDaysAgoDateString = sevenDaysAgo
+      // Calculate the end date
+      let endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + 6);
+      const endDateString = endDate
         .toLocaleString("en-US", options)
         .split(",")[0];
 
-      today = formatDate(currentDateString);
-      sevenDaysAgo = formatDate(sevenDaysAgoDateString);
+      startDate = getFormattedDate(startDateString);
+      // console.log("startDate after format: " + startDate);
+      endDate = getFormattedDate(endDateString);
+      // console.log("endDateString after format: " + endDate);
 
       // Get the sleep data from the past week
       const fitbitResponse = await fetch(
-        `https://api.fitbit.com/1.2/user/-/sleep/date/${sevenDaysAgo}/${today}.json`,
+        `https://api.fitbit.com/1.2/user/-/sleep/date/${startDate}/${endDate}.json`,
         {
           method: "GET",
           headers: {
@@ -54,6 +41,7 @@ const fetchWeeklySleepData = async (currentUser) => {
       );
 
       const fitbitData = await fitbitResponse.json();
+      // console.log(fitbitData);
       return fitbitData;
     }
   } catch (error) {
@@ -63,7 +51,10 @@ const fetchWeeklySleepData = async (currentUser) => {
 };
 
 export const getWeeklySleepData = async (currentUser) => {
-  const sleepData = await fetchWeeklySleepData(currentUser);
+  const sleepData = await fetchWeeklySleepData(
+    currentUser,
+    currentUser.dateOfInterest
+  );
   if (sleepData != null) {
     const formattedSleepData = [
       {
