@@ -13,6 +13,7 @@ import WeeklyHoursOfSleepChart from "../components/WeeklyHoursOfSleepChart";
 import WeeklyZoneMinutesChart from "../components/WeeklyZoneMinutesChart";
 import WeeklyZonevsSleepChart from "../components/WeeklyZonevsSleepChart";
 import WeeklyStepsChart from "../components/WeeklyStepsChart";
+import WeeklyFruitsAndVeggiesChart from "../components/WeeklyFruitsAndVeggiesChart";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
@@ -89,7 +90,12 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
                 </Item>
               </Grid>
               <Grid xs={4}>
-                <Item elevation={4}>Servings of Fruits and Vegetables</Item>
+                <Item elevation={4}>
+                  <h1 style={{ padding: 5, paddingLeft: 20 }}>
+                    Servings of Fruits and Vegetables
+                  </h1>
+                  <WeeklyFruitsAndVeggiesChart />
+                </Item>
               </Grid>
               <Grid xs={4}>
                 <Item elevation={4}>Healthy Meals</Item>
