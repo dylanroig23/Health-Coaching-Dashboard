@@ -11,6 +11,7 @@ import ZoneChart from "./ZoneChart";
 import SleepChart from "./SleepChart";
 import StepsChart from "./StepsChart";
 import DailyGoalsMetTips from "./DailyGoalsMetTips";
+import DailyFruitsAndVeggies from "./DailyFruitsAndVeggies";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
@@ -70,17 +71,22 @@ const DailyDashboard = ({ headingText, CLIENT_ID }) => {
                 <DailyGoalsMetTips />
               </Item>
             </Grid>
-            <Grid xs={5}>
+            <Grid xs={4}>
               <Item elevation={4}>
                 <h1 style={{ padding: 5, paddingLeft: 20 }}>Daily Steps</h1>
                 <StepsChart dayOverview={headingText} />
               </Item>
             </Grid>
             <Grid xs={5}>
-              <Item elevation={4}>Servings of Fruits and Vegetables</Item>
+              <Item elevation={4}>
+                <h1 style={{ padding: 5, paddingLeft: 20 }}>
+                  Servings of Fruits and Vegetables
+                </h1>
+                <DailyFruitsAndVeggies />
+              </Item>
             </Grid>
-            <Grid xs={2}>
-              <Item elevation={4}>Healthy Meals</Item>
+            <Grid xs={3}>
+              <Item elevation={4}>Servings of Fruits and Vegetables</Item>
             </Grid>
           </Grid>
         </Box>
