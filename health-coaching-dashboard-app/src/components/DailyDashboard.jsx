@@ -10,14 +10,14 @@ import { useState, useEffect } from "react";
 import ZoneChart from "./ZoneChart";
 import SleepChart from "./SleepChart";
 import StepsChart from "./StepsChart";
+import DailyGoalsMetTips from "./DailyGoalsMetTips";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
+  color: "#548235",
   border: `1px solid ${"#548235"}`,
 }));
 
@@ -55,29 +55,25 @@ const DailyDashboard = ({ headingText, CLIENT_ID }) => {
           <Grid container spacing={2}>
             <Grid xs={4}>
               <Item elevation={4}>
-              <h1 style={{ padding: 5, paddingLeft: 20 }}>
-                Hours of Sleep
-              </h1>
-              <SleepChart dayOverview={headingText}/>
+                <h1 style={{ padding: 5, paddingLeft: 20 }}>Hours of Sleep</h1>
+                <SleepChart dayOverview={headingText} />
               </Item>
             </Grid>
             <Grid xs={4}>
               <Item elevation={4}>
-              <h1 style={{ padding: 5, paddingLeft: 20 }}>
-                  Zone Minutes
-                </h1>
-                <ZoneChart dayOverview={headingText}/>
+                <h1 style={{ padding: 5, paddingLeft: 20 }}>Zone Minutes</h1>
+                <ZoneChart dayOverview={headingText} />
               </Item>
             </Grid>
             <Grid xs={4}>
-              <Item elevation={4}>Sleep vs Zone</Item>
+              <Item elevation={4}>
+                <DailyGoalsMetTips />
+              </Item>
             </Grid>
             <Grid xs={5}>
               <Item elevation={4}>
-              <h1 style={{ padding: 5, paddingLeft: 20 }}>
-                  Daily Steps
-                </h1>
-                <StepsChart dayOverview={headingText}/>
+                <h1 style={{ padding: 5, paddingLeft: 20 }}>Daily Steps</h1>
+                <StepsChart dayOverview={headingText} />
               </Item>
             </Grid>
             <Grid xs={5}>
