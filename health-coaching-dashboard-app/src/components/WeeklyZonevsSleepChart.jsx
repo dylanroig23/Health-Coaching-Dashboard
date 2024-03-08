@@ -40,8 +40,8 @@ const WeeklyZonevsSleepChart = () => {
           type="monotone"
           dataKey="sleep"
           stroke="#0389ad"
-          strokeWidth={3}
-          dot={{ strokeWidth: 4 }}
+          strokeWidth={5}
+          dot={{ strokeWidth: 5 }}
           activeDot={{ r: 8 }}
         />
         <Line
@@ -49,8 +49,8 @@ const WeeklyZonevsSleepChart = () => {
           type="monotone"
           dataKey="zone"
           stroke="#f7bd52"
-          strokeWidth={3}
-          dot={{ strokeWidth: 4 }}
+          strokeWidth={5}
+          dot={{ strokeWidth: 5 }}
           activeDot={{ r: 8 }}
         />
       </LineChart>

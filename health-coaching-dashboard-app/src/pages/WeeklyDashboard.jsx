@@ -9,12 +9,14 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import WeeklyHoursOfSleepChart from "../components/WeeklyHoursOfSleepChart";
 import WeeklyZoneMinutesChart from "../components/WeeklyZoneMinutesChart";
 import WeeklyZonevsSleepChart from "../components/WeeklyZonevsSleepChart";
 import WeeklyStepsChart from "../components/WeeklyStepsChart";
-import WeeklyFruitsAndVeggiesChart from "../components/WeeklyFruitsAndVeggiesChart";
 import WeeklyHealthyMealsChart from "../components/WeeklyHealthyMealsChart";
+import WeeklyServingsOfFruitsChart from "../components/WeeklyServingsOfFruit";
+import WeeklyServingsOfVegetablesChart from "../components/WeeklyServingsOfVegetablesChart";
+import WeeklyActivityCompletion from "../components/WeeklyActivityCompletion";
+import WeeklySmartGoals from "../components/WeeklySmartGoals";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
@@ -64,10 +66,8 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
             <Grid container spacing={2}>
               <Grid xs={4}>
                 <Item elevation={4}>
-                  <h1 style={{ padding: 5, paddingLeft: 20 }}>
-                    Hours of Sleep
-                  </h1>
-                  <WeeklyHoursOfSleepChart />
+                  <h1 style={{ padding: 5, paddingLeft: 20 }}>Steps</h1>
+                  <WeeklyStepsChart />
                 </Item>
               </Grid>
               <Grid xs={4}>
@@ -86,31 +86,41 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
               </Grid>
               <Grid xs={4}>
                 <Item elevation={4}>
-                  <h1 style={{ padding: 5, paddingLeft: 20 }}>Steps</h1>
-                  <WeeklyStepsChart />
+                  <h1 style={{ padding: 5, paddingLeft: 20 }}>
+                    Servings of Fruits
+                  </h1>
+                  <WeeklyServingsOfFruitsChart />
                 </Item>
               </Grid>
               <Grid xs={4}>
                 <Item elevation={4}>
                   <h1 style={{ padding: 5, paddingLeft: 20 }}>
-                    Servings of Fruits and Vegetables
+                    Servings of Vegetables
                   </h1>
-                  <WeeklyFruitsAndVeggiesChart />
+                  <WeeklyServingsOfVegetablesChart />
                 </Item>
               </Grid>
               <Grid xs={4}>
                 <Item elevation={4}>
-                  <h1 style={{ padding: 5, paddingLeft: 20}}>
-                    Healthy Meals
-                  </h1>
+                  <h1 style={{ padding: 5, paddingLeft: 20 }}>Healthy Meals</h1>
                   <WeeklyHealthyMealsChart />
                 </Item>
               </Grid>
               <Grid xs={4}>
-                <Item elevation={4}>Activity Completion</Item>
+                <Item elevation={4}>
+                  <h1 style={{ padding: 5, paddingLeft: 20 }}>
+                    Activity Completion
+                  </h1>
+                  <WeeklyActivityCompletion />
+                </Item>
               </Grid>
               <Grid xs={4}>
-                <Item elevation={4}>User's Weekly SMART Goals</Item>
+                <Item elevation={4}>
+                  <h1 style={{ padding: 5, paddingLeft: 20 }}>
+                    Weekly SMART Goals
+                  </h1>
+                  <WeeklySmartGoals />
+                </Item>
               </Grid>
             </Grid>
           </Box>

@@ -71,7 +71,7 @@ const WeeklyHealthyMealsChart = () => {
           type="monotone"
           dataKey="healthy"
           stroke="#3bf563"
-          strokeWidth={3}
+          strokeWidth={5}
           dot={{ strokeWidth: 4 }}
           activeDot={{ r: 8 }}
         />
@@ -79,16 +79,16 @@ const WeeklyHealthyMealsChart = () => {
           type="monotone"
           dataKey="semihealthy"
           stroke="#f2e750"
-          strokeWidth={3}
-          dot={{ strokeWidth: 4 }}
+          strokeWidth={5}
+          dot={{ strokeWidth: 5 }}
           activeDot={{ r: 8 }}
         />
         <Line
           type="monotone"
           dataKey="unhealthy"
           stroke="#ff0000"
-          strokeWidth={3}
-          dot={{ strokeWidth: 4 }}
+          strokeWidth={5}
+          dot={{ strokeWidth: 5 }}
           activeDot={{ r: 8 }}
         />
       </LineChart>
