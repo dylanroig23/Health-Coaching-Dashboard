@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Line,
+  LineChart,
+} from "recharts";
 import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklyZonevsSleepData } from "../scripts/getWeeklyZonevsSleepData";
 
@@ -22,15 +29,31 @@ const WeeklyZonevsSleepChart = () => {
 
   return (
     <>
-      <BarChart width={450} height={300} data={zonevsSleepData} margin={0}>
+      <LineChart width={450} height={300} data={zonevsSleepData} margin={0}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="day" />
         <YAxis yAxisId="sleep" orientation="left" stroke="#0389ad" />
         <YAxis yAxisId="zone" orientation="right" stroke="#f7bd52" />
         <Tooltip />
-        <Bar yAxisId="sleep" dataKey="sleep" fill="#0389ad" />
-        <Bar yAxisId="zone" dataKey="zone" fill="#f7bd52" />
-      </BarChart>
+        <Line
+          yAxisId="sleep"
+          type="monotone"
+          dataKey="sleep"
+          stroke="#0389ad"
+          strokeWidth={3}
+          dot={{ strokeWidth: 4 }}
+          activeDot={{ r: 8 }}
+        />
+        <Line
+          yAxisId="zone"
+          type="monotone"
+          dataKey="zone"
+          stroke="#f7bd52"
+          strokeWidth={3}
+          dot={{ strokeWidth: 4 }}
+          activeDot={{ r: 8 }}
+        />
+      </LineChart>
     </>
   );
 };
