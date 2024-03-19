@@ -1,0 +1,98 @@
+{
+  "users": {
+    "user1": {
+      "name": "users name",
+      "startDate": "users start date",
+      "lastUpdated": "the last time this users account was interacted with",
+      "fitbitUserName": "fitbit user name",
+      "accessToken": "fitbit access token",
+      "refreshToken": "fitbit refresh token",
+      "contactInformtion": {
+        "firstname": "first name",
+        "lastname": "last name",
+        "cell phone": "cell phone number",
+        "home address": "home phone number",
+        "emailAddress": "emailAddress",
+        "emergencyContact1": {
+          "firstname": "first name",
+          "lastname": "last name",
+          "cell phone": "cell phone number",
+          "home address": "home phone number",
+          "emailAddress": "emailAddress"
+        },
+        "emergencyContact2": {
+          "firstname": "first name",
+          "lastname": "last name",
+          "cell phone": "cell phone number",
+          "home address": "home phone number",
+          "emailAddress": "emailAddress"
+        }
+      }
+    }
+  },
+  "sleepData": {
+    "user1": {
+      "week1": {
+        "placeholder": "put fitbit data here"
+      },
+      "week2": {
+        "placeholder": "put fitbit data here"
+      },
+      "week3": {
+        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+      }
+    }
+  },
+  "stepsData": {
+    "user1": {
+      "week1": {
+        "placeholder": "put fitbit data here"
+      },
+      "week2": {
+        "placeholder": "put fitbit data here"
+      },
+      "week3": {
+        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+      }
+    }
+  },
+  "zoneData": {
+    "user1": {
+      "week1": {
+        "placeholder": "put fitbit data here"
+      },
+      "week2": {
+        "placeholder": "put fitbit data here"
+      },
+      "week3": {
+        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+      }
+    }
+  },
+  "servingsData": {
+    "user1": {
+      "week1": {
+        "placeholder": "put fitbit data here"
+      },
+      "week2": {
+        "placeholder": "put fitbit data here"
+      },
+      "week3": {
+        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+      }
+    }
+  },
+  "healthyMealsData": {
+    "user1": {
+      "week1": {
+        "placeholder": "put fitbit data here"
+      },
+      "week2": {
+        "placeholder": "put fitbit data here"
+      },
+      "week3": {
+        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+      }
+    }
+  }
+}
