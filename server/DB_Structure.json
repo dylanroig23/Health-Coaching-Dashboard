@@ -33,65 +33,78 @@
   "sleepData": {
     "user1": {
       "week1": {
-        "placeholder": "put fitbit data here"
-      },
-      "week2": {
-        "placeholder": "put fitbit data here"
-      },
-      "week3": {
-        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+        "mondaySleep": "monday sleep time",
+        "tuesdaySleep": "tuesday sleep time",
+        "wednesdaySleep": "wednesday sleep time",
+        "thursdaySleep": "thursday sleep time",
+        "fridaySleep": "friday sleep time",
+        "saturdaySleep": "saturday sleep time",
+        "sundaySleep": "sunday sleep time (continue for following weeks)"
       }
     }
   },
   "stepsData": {
     "user1": {
       "week1": {
-        "placeholder": "put fitbit data here"
-      },
-      "week2": {
-        "placeholder": "put fitbit data here"
-      },
-      "week3": {
-        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+        "mondaySteps": "monday steps time",
+        "tuesdaySteps": "tuesday steps time",
+        "wednesdaySteps": "wednesday steps time",
+        "thursdaySteps": "thursday steps time",
+        "fridaySteps": "friday steps time",
+        "saturdaySteps": "saturday steps time",
+        "sundaySteps": "sunday steps time (continue for following weeks)"
       }
     }
   },
   "zoneData": {
     "user1": {
       "week1": {
-        "placeholder": "put fitbit data here"
-      },
-      "week2": {
-        "placeholder": "put fitbit data here"
-      },
-      "week3": {
-        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+        "mondayZone": "monday Zone time",
+        "tuesdayZone": "tuesday Zone time",
+        "wednesdayZone": "wednesday Zone time",
+        "thursdayZone": "thursday Zone time",
+        "fridayZone": "friday Zone time",
+        "saturdayZone": "saturday Zone time",
+        "sundayZone": "sunday Zone time (continue for following weeks)"
       }
     }
   },
-  "servingsData": {
+  "veggieServingsData": {
     "user1": {
       "week1": {
-        "placeholder": "put fitbit data here"
-      },
-      "week2": {
-        "placeholder": "put fitbit data here"
-      },
-      "week3": {
-        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+        "mondayServings": "monday Servings",
+        "tuesdayServings": "tuesday Servings",
+        "wednesdayServings": "wednesday Servings",
+        "thursdayServings": "thursday Servings",
+        "fridayServings": "friday Servings",
+        "saturdayServings": "saturday Servings",
+        "sundayServings": "sunday Servings (continue for following weeks)"
+      }
+    }
+  },
+  "fruitsServingsData": {
+    "user1": {
+      "week1": {
+        "mondayServings": "monday Servings",
+        "tuesdayServings": "tuesday Servings",
+        "wednesdayServings": "wednesday Servings",
+        "thursdayServings": "thursday Servings",
+        "fridayServings": "friday Servings",
+        "saturdayServings": "saturday Servings",
+        "sundayServings": "sunday Servings (continue for following weeks)"
       }
     }
   },
   "healthyMealsData": {
     "user1": {
       "week1": {
-        "placeholder": "put fitbit data here"
-      },
-      "week2": {
-        "placeholder": "put fitbit data here"
-      },
-      "week3": {
-        "placeholder": "put fitbit data here (continue to week 12 as intervention progresses)"
+        "mondayHealthyMeals": "monday HealthyMeals",
+        "tuesdayHealthyMeals": "tuesday HealthyMeals",
+        "wednesdayHealthyMeals": "wednesday HealthyMeals",
+        "thursdayHealthyMeals": "thursday HealthyMeals",
+        "fridayHealthyMeals": "friday HealthyMeals",
+        "saturdayHealthyMeals": "saturday HealthyMeals",
+        "sundayHealthyMeals": "sunday HealthyMeals (continue for following weeks)"
       }
     }
   }
