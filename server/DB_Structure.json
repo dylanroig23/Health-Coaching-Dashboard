@@ -8,10 +8,10 @@
       "accessToken": "fitbit access token",
       "refreshToken": "fitbit refresh token",
       "contactInformtion": {
-        "firstname": "first name",
-        "lastname": "last name",
-        "cell phone": "cell phone number",
-        "home address": "home phone number",
+        "firstName": "first name",
+        "lastName": "last name",
+        "cellPhone": "cell phone number",
+        "homeAddress": "home phone number",
         "emailAddress": "emailAddress",
         "emergencyContact1": {
           "firstname": "first name",

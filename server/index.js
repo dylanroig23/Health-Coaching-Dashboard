@@ -18,9 +18,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use("/", router);
 
-const dbOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose
-  .connect(process.env.DB_URI, dbOptions)
+  .connect(process.env.DB_URI)
   .then(() => console.log("MongoDB Database Connected!"))
   .catch((err) => console.log(err));
 
