@@ -11,20 +11,20 @@
         "firstName": "first name",
         "lastName": "last name",
         "cellPhone": "cell phone number",
-        "homeAddress": "home phone number",
+        "homeNumber": "home phone number",
         "emailAddress": "emailAddress",
         "emergencyContact1": {
           "firstname": "first name",
           "lastname": "last name",
-          "cell phone": "cell phone number",
-          "home address": "home phone number",
+          "cellPhone": "cell phone number",
+          "homeNumber": "home phone number",
           "emailAddress": "emailAddress"
         },
         "emergencyContact2": {
           "firstname": "first name",
           "lastname": "last name",
-          "cell phone": "cell phone number",
-          "home address": "home phone number",
+          "cellPhone": "cell phone number",
+          "homeNumber": "home phone number",
           "emailAddress": "emailAddress"
         }
       }

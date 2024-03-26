@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const router = require("./routes/router");
+const sleepRouter = require("./routes/sleepRouter");
+const usersRouter = require("./routes/usersRouter");
 const mongoose = require("mongoose");
 require("dotenv/config");
 
@@ -16,7 +17,8 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-app.use("/", router);
+app.use("/sleepData", sleepRouter);
+app.use("/users", usersRouter);
 
 mongoose
   .connect(process.env.DB_URI)
