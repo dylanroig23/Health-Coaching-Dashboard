@@ -13,6 +13,18 @@ import { getWeeklyZonevsSleepData } from "../scripts/getWeeklyZonevsSleepData";
 const WeeklyZonevsSleepChart = () => {
   const [zonevsSleepData, setzonevsSleepData] = useState([]);
 
+  const [maxYValueSleep, setMaxYValueSleep] = useState();
+  const handleMaxYChangeSleep = (event) => {
+    const newValue = parseFloat(event.target.value);
+    setMaxYValueSleep(newValue);
+  };
+
+  const [maxYValueZone, setMaxYValueZone] = useState();
+  const handleMaxYChangeZone = (event) => {
+    const newValue = parseFloat(event.target.value);
+    setMaxYValueZone(newValue);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,8 +44,8 @@ const WeeklyZonevsSleepChart = () => {
       <LineChart width={450} height={300} data={zonevsSleepData} margin={0}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="day" />
-        <YAxis yAxisId="sleep" orientation="left" stroke="#0389ad" />
-        <YAxis yAxisId="zone" orientation="right" stroke="#f7bd52" />
+        <YAxis yAxisId="sleep" orientation="left" stroke="#0389ad" domain={[0, maxYValueSleep]} />
+        <YAxis yAxisId="zone" orientation="right" stroke="#f7bd52" domain={[0, maxYValueZone]} />
         <Tooltip />
         <Line
           yAxisId="sleep"
@@ -54,6 +66,30 @@ const WeeklyZonevsSleepChart = () => {
           activeDot={{ r: 8 }}
         />
       </LineChart>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>
+          <label style={{ margin: '10px'}} >Max:</label>
+          <input
+            type="number"
+            value={maxYValueSleep}
+            onChange={handleMaxYChangeSleep}
+            step={5}
+            min={0}
+            style={{ padding: '2px', width: '50px', marginBottom: '10px' }}
+          />
+        </div>
+        <div>
+          <label style={{ margin: '10px'}} >Max:</label>
+          <input
+            type="number"
+            value={maxYValueZone}
+            onChange={handleMaxYChangeZone}
+            step={5}
+            min={0}
+            style={{ padding: '2px', width: '50px', margin: '0 40px 10px 0'}}
+          />
+        </div>
+      </div>
     </>
   );
 };
