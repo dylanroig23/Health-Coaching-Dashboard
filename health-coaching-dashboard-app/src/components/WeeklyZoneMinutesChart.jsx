@@ -6,6 +6,12 @@ import { getWeeklyZoneMinutesData } from "../scripts/getWeeklyZoneMinutesData";
 const WeeklyZoneMinutesChart = () => {
   const [chartZoneData, setChartZoneData] = useState([]);
 
+  const [maxYValue, setMaxYValue] = useState();
+  const handleMaxYChange = (event) => {
+    const newValue = parseFloat(event.target.value);
+    setMaxYValue(newValue);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,10 +31,19 @@ const WeeklyZoneMinutesChart = () => {
       <BarChart width={450} height={300} data={chartZoneData} margin={0}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="day" />
-        <YAxis />
+        <YAxis domain={[0, maxYValue]} />
         <Tooltip />
         <Bar dataKey="duration" fill="#f7bd52" />
       </BarChart>
+      <label style={{ margin: '10px'}} >Max:</label>
+      <input
+        type="number"
+        value={maxYValue}
+        onChange={handleMaxYChange}
+        step={5}
+        min={0}
+        style={{ padding: '2px', width: '50px', marginBottom: '10px' }}
+      />
     </>
   );
 };
