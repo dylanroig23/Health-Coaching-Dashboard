@@ -4,7 +4,8 @@
   "description": "a server to serve the frontend of the health coaching dashboard",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "OSU Capstone",
   "license": "ISC",

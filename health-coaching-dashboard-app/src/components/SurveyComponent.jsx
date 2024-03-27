@@ -19,13 +19,13 @@ export function ContactInfoSurveyComponent() {
   const survey = new Model(contactInfoJson);
   survey.onComplete.add((sender, options) => {
     console.log(JSON.stringify(sender.data, null, 3));
-    const dataJSON = JSON.stringify(sender.data, null, 3);
+    const dataJSON = sender.data;
 
     const axiosPostData = async () => {
       const postData = {
         name: dataJSON.firstName,
         startDate: "15-02-2024",
-        fitbitUserName: "user",
+        fitbitUsername: "user",
         firstName: dataJSON.firstName,
         lastName: dataJSON.lastName,
         cellPhone: dataJSON.cellphone,
@@ -42,6 +42,8 @@ export function ContactInfoSurveyComponent() {
         homeNumberEC2: dataJSON.homephoneEC2,
         emailAddressEC2: dataJSON.emailEC2,
       };
+
+      console.log(postData);
 
       await axios
         .post("http://localhost:4000/users/newUser", postData)

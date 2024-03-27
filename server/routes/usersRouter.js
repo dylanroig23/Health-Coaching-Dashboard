@@ -6,7 +6,7 @@ usersRouter.post("/newUser", async (req, res) => {
   const {
     name,
     startDate,
-    fitbitUserName,
+    fitbitUsername,
     firstName,
     lastName,
     cellPhone,
@@ -54,7 +54,7 @@ usersRouter.post("/newUser", async (req, res) => {
     name: name,
     startDate: startDate,
     lastUpdated: new Date(),
-    fitbitUserName: fitbitUserName,
+    fitbitUsername: fitbitUsername,
     accessToken: 123,
     refreshToken: 1234,
     contactInformation: contactInformation,
@@ -63,7 +63,7 @@ usersRouter.post("/newUser", async (req, res) => {
   const newUser = new userSchema.Users(userData);
   const saveUser = await newUser.save();
   if (saveUser) {
-    res.send("New User Added.");
+    res.send(userData);
   } else {
     res.send("Failed to add new user.");
   }
