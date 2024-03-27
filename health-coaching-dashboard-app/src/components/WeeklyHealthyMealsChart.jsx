@@ -4,7 +4,7 @@
     as of 3/7/2024
 */
 
-import React from "react";
+import React, { useState } from "react";
 import {
   LineChart,
   Line,
@@ -60,12 +60,19 @@ const healthyMealsData = [
 ];
 
 const WeeklyHealthyMealsChart = () => {
+
+  const [maxYValue, setMaxYValue] = useState();
+  const handleMaxYChange = (event) => {
+    const newValue = parseFloat(event.target.value);
+    setMaxYValue(newValue);
+  };
+
   return (
     <>
       <LineChart width={450} height={300} data={healthyMealsData} margin={0}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="day" padding={{ left: 30, right: 30 }} />
-        <YAxis domain={[0, 4]} />
+        <YAxis domain={[0, maxYValue]} />
         <Tooltip />
         <Line
           type="monotone"
@@ -92,6 +99,15 @@ const WeeklyHealthyMealsChart = () => {
           activeDot={{ r: 8 }}
         />
       </LineChart>
+      <label style={{ margin: '10px'}} >Max:</label>
+      <input
+        type="number"
+        value={maxYValue}
+        onChange={handleMaxYChange}
+        step={1}
+        min={0}
+        style={{ padding: '2px', width: '50px', marginBottom: '10px' }}
+      />
     </>
   );
 };
