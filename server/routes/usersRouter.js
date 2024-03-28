@@ -1,6 +1,8 @@
 const express = require("express");
 const usersRouter = express.Router();
 const userSchema = require("../models/usersSchema");
+const getCodeVerifier = require("../authentication/generateCodeVerifier");
+const getCodeChallenge = require("../authentication/generateCodeChallenge");
 
 usersRouter.post("/newUser", async (req, res) => {
   const {
@@ -49,6 +51,9 @@ usersRouter.post("/newUser", async (req, res) => {
     emergencyContact1: emergencyContact1,
     emergencyContact2: emergencyContact2,
   };
+
+  const codeVerifier = getCodeVerifier();
+  const codeChallenge = getCodeChallenge(codeVerifier);
 
   const userData = {
     name: name,
