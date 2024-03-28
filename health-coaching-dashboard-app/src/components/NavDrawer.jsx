@@ -10,6 +10,7 @@ import ListItemText from "@mui/material/ListItemText";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const NavDrawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); //initial state of the NavDrawer is false/closed
@@ -63,6 +64,19 @@ const NavDrawer = () => {
                   <Typography variant="button">
                     Long-Term SMART Goals
                   </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+          
+          <ListItem>
+            <ListItemButton href="/">
+              <ListItemIcon>
+                <LogoutIcon style={{ fontSize: 42, color: "#548235" }} />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography variant="button">Return to User Select</Typography>
                 }
               />
             </ListItemButton>

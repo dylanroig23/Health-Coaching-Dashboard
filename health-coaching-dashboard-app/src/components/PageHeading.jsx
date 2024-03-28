@@ -3,7 +3,8 @@ import { Box } from "@mui/system";
 import NavDrawer from "./NavDrawer";
 
 // The page heading to be used on every page, must pass a headingText prop
-const PageHeading = ({ headingText }) => {
+const PageHeading = ({ headingText, showMenu}) => {
+  console.log(showMenu);
   return (
     <Box
       sx={{
@@ -27,7 +28,7 @@ const PageHeading = ({ headingText }) => {
       >
         {headingText || "Pass a prop to this component to change header"}
       </h1>
-      <NavDrawer />
+      { showMenu === false ? <></> : <NavDrawer />}
     </Box>
   );
 };

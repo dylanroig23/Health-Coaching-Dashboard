@@ -9,6 +9,7 @@
 
 import React, { useState } from "react";
 import PageHeading from "../components/PageHeading";
+import UserList from "../components/UserList";
 import {
   generateCodeVerifierAndChallenge,
   buildFitbitAuthorizationUrl,
@@ -25,6 +26,8 @@ const AuthorizeUser = ({ CLIENT_ID }) => {
   const [codeChallenge, setCodeChallenge] = useState("");
   // eslint-disable-next-line
   const [accessToken, setAccessToken] = useState("");
+
+
 
   //adds the user to the db.json, this is done by the json-server
   const addUser = async (user) => {

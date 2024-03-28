@@ -13,6 +13,7 @@ import WeeklyHoursOfSleepChart from "../components/WeeklyHoursOfSleepChart";
 import WeeklyZoneMinutesChart from "../components/WeeklyZoneMinutesChart";
 import WeeklyZonevsSleepChart from "../components/WeeklyZonevsSleepChart";
 import WeeklyStepsChart from "../components/WeeklyStepsChart";
+import UserList from "../components/UserList";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({

@@ -13,6 +13,7 @@ import AuthorizeUser from "./pages/AuthorizeUser";
 import CallbackHandler from "./pages/CallbackHandler";
 import Redcap from "./pages/Redcap";
 import ContactInfo from "./pages/ContactInfo";
+import UserList from "./components/UserList";
 
 function App() {
   const CLIENT_ID = "CLIENT_ID"; //this value comes from Fitbit (we will want to change this to an environment variable?)
@@ -20,7 +21,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<WeeklyDashboard CLIENT_ID={CLIENT_ID} />} />
+        <Route path="/WeeklyDashboard" element={<WeeklyDashboard CLIENT_ID={CLIENT_ID} />} />
+        <Route path="/" element={<UserList CLIENT_ID={CLIENT_ID} />} />
         <Route path="/sunday" element={<Sunday CLIENT_ID={CLIENT_ID} />} />
         <Route path="/monday" element={<Monday CLIENT_ID={CLIENT_ID} />} />
         <Route path="/tuesday" element={<Tuesday CLIENT_ID={CLIENT_ID} />} />
