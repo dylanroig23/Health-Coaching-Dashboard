@@ -3,7 +3,30 @@ const usersRouter = express.Router();
 const userSchema = require("../models/usersSchema");
 const getCodeVerifier = require("../authentication/generateCodeVerifier");
 const getCodeChallenge = require("../authentication/generateCodeChallenge");
+const getAuthorizationURL = require("../authentication/generateAuthorizationURL");
+const scopes = [
+  "activity",
+  "heartrate",
+  "location",
+  "nutrition",
+  "oxygen_saturation",
+  "profile",
+  "respiratory_rate",
+  "settings",
+  "sleep",
+  "social",
+  "temperature",
+  "weight",
+];
+require("dotenv/config");
 
+// callback from Fitbit Authorization
+usersRouter.get("newUser/callback", async (req, res) => {
+  // pass the userId as a query parameter and query it then update
+  // the mongoDB database value and input the access and refresh tokens
+});
+
+// add a new user
 usersRouter.post("/newUser", async (req, res) => {
   const {
     name,
@@ -52,8 +75,16 @@ usersRouter.post("/newUser", async (req, res) => {
     emergencyContact2: emergencyContact2,
   };
 
+  // add the user and then do this work
+  // pass the MongoDB userID as a query parameter that can be grabbed
+  // on the callback
   const codeVerifier = getCodeVerifier();
   const codeChallenge = getCodeChallenge(codeVerifier);
+  const authorizationURL = getAuthorizationURL(
+    process.env.CLIENT_ID,
+    codeChallenge,
+    scopes
+  );
 
   const userData = {
     name: name,
