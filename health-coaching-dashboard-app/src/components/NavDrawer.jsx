@@ -10,6 +10,8 @@ import ListItemText from "@mui/material/ListItemText";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+//import calendar view icon
+import CalendarViewIcon from "@mui/icons-material/CalendarMonth"
 import WeekSelectorDropdown from "./WeekSelectorDropdown";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 
@@ -78,6 +80,20 @@ const NavDrawer = ({ userData }) => {
                 primary={
                   <Typography variant="button">
                     <WeekSelectorDropdown userData={userData} />
+                  </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton href="/calendar-view">
+              <ListItemIcon>
+                <CalendarViewIcon style={{ fontSize: 42, color: "#548235" }} />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography variant="button">
+                    Calendar View
                   </Typography>
                 }
               />
