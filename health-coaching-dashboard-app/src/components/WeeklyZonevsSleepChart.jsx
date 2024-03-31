@@ -6,6 +6,7 @@ import {
   Tooltip,
   Line,
   LineChart,
+  ResponsiveContainer
 } from "recharts";
 import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklyZonevsSleepData } from "../scripts/getWeeklyZonevsSleepData";
@@ -41,31 +42,33 @@ const WeeklyZonevsSleepChart = () => {
 
   return (
     <>
-      <LineChart width={450} height={300} data={zonevsSleepData} margin={0}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis yAxisId="sleep" orientation="left" stroke="#0389ad" domain={[0, maxYValueSleep]} />
-        <YAxis yAxisId="zone" orientation="right" stroke="#f7bd52" domain={[0, maxYValueZone]} />
-        <Tooltip />
-        <Line
-          yAxisId="sleep"
-          type="monotone"
-          dataKey="sleep"
-          stroke="#0389ad"
-          strokeWidth={5}
-          dot={{ strokeWidth: 5 }}
-          activeDot={{ r: 8 }}
-        />
-        <Line
-          yAxisId="zone"
-          type="monotone"
-          dataKey="zone"
-          stroke="#f7bd52"
-          strokeWidth={5}
-          dot={{ strokeWidth: 5 }}
-          activeDot={{ r: 8 }}
-        />
-      </LineChart>
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart data={zonevsSleepData} margin={0}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="day" />
+          <YAxis yAxisId="sleep" orientation="left" stroke="#0389ad" domain={[0, maxYValueSleep]} />
+          <YAxis yAxisId="zone" orientation="right" stroke="#f7bd52" domain={[0, maxYValueZone]} />
+          <Tooltip />
+          <Line
+            yAxisId="sleep"
+            type="monotone"
+            dataKey="sleep"
+            stroke="#0389ad"
+            strokeWidth={5}
+            dot={{ strokeWidth: 5 }}
+            activeDot={{ r: 8 }}
+          />
+          <Line
+            yAxisId="zone"
+            type="monotone"
+            dataKey="zone"
+            stroke="#f7bd52"
+            strokeWidth={5}
+            dot={{ strokeWidth: 5 }}
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div>
           <label style={{ margin: '10px'}} >Max:</label>

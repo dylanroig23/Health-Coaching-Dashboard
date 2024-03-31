@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklySleepData } from "../scripts/getWeeklySleepData";
 
@@ -22,13 +22,15 @@ const WeeklyHoursOfSleepChart = () => {
 
   return (
     <>
-      <BarChart width={450} height={300} data={chartSleepData} margin={0}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey="duration" fill="#0389ad" />
-      </BarChart>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart width={450} height={300} data={chartSleepData} margin={0}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="day" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="duration" fill="#0389ad" />
+        </BarChart>
+      </ResponsiveContainer>
     </>
   );
 };

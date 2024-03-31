@@ -12,6 +12,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  ResponsiveContainer
 } from "recharts";
 
 const healthyMealsData = [
@@ -69,36 +70,38 @@ const WeeklyHealthyMealsChart = () => {
 
   return (
     <>
-      <LineChart width={450} height={300} data={healthyMealsData} margin={0}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" padding={{ left: 30, right: 30 }} />
-        <YAxis domain={[0, maxYValue]} />
-        <Tooltip />
-        <Line
-          type="monotone"
-          dataKey="healthy"
-          stroke="#3bf563"
-          strokeWidth={5}
-          dot={{ strokeWidth: 4 }}
-          activeDot={{ r: 8 }}
-        />
-        <Line
-          type="monotone"
-          dataKey="semihealthy"
-          stroke="#f2e750"
-          strokeWidth={5}
-          dot={{ strokeWidth: 5 }}
-          activeDot={{ r: 8 }}
-        />
-        <Line
-          type="monotone"
-          dataKey="unhealthy"
-          stroke="#ff0000"
-          strokeWidth={5}
-          dot={{ strokeWidth: 5 }}
-          activeDot={{ r: 8 }}
-        />
-      </LineChart>
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart data={healthyMealsData} margin={0}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="day" padding={{ left: 30, right: 30 }} />
+          <YAxis domain={[0, maxYValue]} />
+          <Tooltip />
+          <Line
+            type="monotone"
+            dataKey="healthy"
+            stroke="#3bf563"
+            strokeWidth={5}
+            dot={{ strokeWidth: 4 }}
+            activeDot={{ r: 8 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="semihealthy"
+            stroke="#f2e750"
+            strokeWidth={5}
+            dot={{ strokeWidth: 5 }}
+            activeDot={{ r: 8 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="unhealthy"
+            stroke="#ff0000"
+            strokeWidth={5}
+            dot={{ strokeWidth: 5 }}
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
       <label style={{ margin: '10px'}} >Max:</label>
       <input
         type="number"
