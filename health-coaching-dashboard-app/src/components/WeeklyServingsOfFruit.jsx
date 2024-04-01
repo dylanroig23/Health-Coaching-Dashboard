@@ -5,7 +5,7 @@
 */
 
 import React, { useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const formattedFruitsData = [
   {
@@ -48,13 +48,15 @@ const WeeklyServingsOfFruitsChart = () => {
 
   return (
     <>
-      <BarChart width={450} height={300} data={formattedFruitsData} margin={0}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis domain={[0, maxYValue]} />
-        <Tooltip />
-        <Bar dataKey="fruits" fill="#f2e750" />
-      </BarChart>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={formattedFruitsData} margin={0}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="day" />
+          <YAxis domain={[0, maxYValue]} />
+          <Tooltip />
+          <Bar dataKey="fruits" fill="#f2e750" />
+        </BarChart>
+      </ResponsiveContainer>
       <label style={{ margin: '10px'}} >Max:</label>
       <input
         type="number"
