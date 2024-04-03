@@ -11,7 +11,6 @@ const AddUserSurvey = () => {
   //const navigate = useNavigate();
 
   survey.onComplete.add((sender, options) => {
-    console.log(JSON.stringify(sender.data, null, 3));
     const dataJSON = sender.data;
 
     const axiosPostData = async () => {
@@ -35,8 +34,6 @@ const AddUserSurvey = () => {
         homeNumberEC2: dataJSON.homephoneEC2,
         emailAddressEC2: dataJSON.emailEC2,
       };
-
-      console.log(postData);
 
       await axios
         .post("http://localhost:4000/users/newUser", postData)

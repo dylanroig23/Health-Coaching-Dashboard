@@ -41,6 +41,10 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
       if (userData && userData.length > 0) {
         setUserData(userData);
       }
+
+      if (!userData) {
+        navigate("/adduser");
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -129,36 +133,37 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
     );
   } else {
     // if no users exist then prompt the user to add a user
-    return (
-      <>
-        <PageHeading headingText="Please Add a User" />;
-        <Container
-          maxWidth="sm" // Limiting container width for centering purposes
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Button
-            variant="contained"
-            size="large" // Making the button larger
-            sx={{
-              marginTop: 2,
-              bgcolor: "#a9d18e",
-              border: `2px solid ${"#548235"}`,
-              "&:hover": {
-                bgcolor: "#548235",
-              },
-            }} // Adding some top margin for spacing
-            onClick={() => navigate("/authorize")}
-          >
-            Add User
-          </Button>
-        </Container>
-      </>
-    );
+    // return (
+    //   <>
+    //     <PageHeading headingText="Please Add a User" />;
+    //     <Container
+    //       maxWidth="sm" // Limiting container width for centering purposes
+    //       sx={{
+    //         display: "flex",
+    //         flexDirection: "column",
+    //         alignItems: "center",
+    //         justifyContent: "center",
+    //       }}
+    //     >
+    //       <Button
+    //         variant="contained"
+    //         size="large" // Making the button larger
+    //         sx={{
+    //           marginTop: 2,
+    //           bgcolor: "#a9d18e",
+    //           border: `2px solid ${"#548235"}`,
+    //           "&:hover": {
+    //             bgcolor: "#548235",
+    //           },
+    //         }} // Adding some top margin for spacing
+    //         onClick={() => navigate("/authorize")}
+    //       >
+    //         Add User
+    //       </Button>
+    //     </Container>
+    //   </>
+    // );
+    navigate("/adduser");
   }
 };
 

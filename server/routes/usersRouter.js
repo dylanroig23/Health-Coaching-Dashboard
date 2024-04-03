@@ -21,11 +21,12 @@ const scopes = [
 require("dotenv/config");
 const { v4: uuidv4 } = require("uuid");
 const axios = require("axios");
+const mongoose = require("mongoose");
 
 /*
   Callback from the Fitbit User Authorization
 */
-usersRouter.get("newUser/callback", async (req, res) => {
+usersRouter.get("/newUser/callback/", async (req, res) => {
   // get the authorization code, userId, and codeVerifier
   const authorizationCode = req.query.code;
   const userId = req.query.userId;
@@ -130,7 +131,7 @@ usersRouter.post("/newUser", async (req, res) => {
     emergencyContact2: emergencyContact2,
   };
 
-  const userId = uuidv4();
+  const userId = new mongoose.Types.ObjectId();
 
   const userData = {
     _id: userId,
@@ -144,20 +145,19 @@ usersRouter.post("/newUser", async (req, res) => {
   };
 
   const newUser = new userSchema.Users(userData);
-  const saveUser = await newUser.save();
 
   try {
     const saveUser = await newUser.save();
     if (saveUser) {
       const codeVerifier = getCodeVerifier();
-      const codeChallenge = getCodeChallenge(codeVerifier);
+      const codeChallenge = await getCodeChallenge(codeVerifier);
       const authorizationURL = getAuthorizationURL(
         process.env.CLIENT_ID,
         codeChallenge,
         scopes
       );
-      res.redirect(
-        `${authorizationURL}?userId=${userId}&codeVerifier=${codeVerifier}`
+      res.send(
+        `${authorizationURL}&userId=${userId}&codeVerifier=${codeVerifier}`
       );
     } else {
       res.send("Failed to save new user.");
