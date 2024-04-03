@@ -1,6 +1,7 @@
 import React from "react";
 import DailyDashboard from "../components/DailyDashboard";
 
+/*Daily page for user's Wednesday fitbit information */
 const Wednesday = ({ CLIENT_ID }) => {
   return (
     <>
