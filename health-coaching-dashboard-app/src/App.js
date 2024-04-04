@@ -15,6 +15,7 @@ import Redcap from "./pages/Redcap";
 import ContactInfo from "./pages/ContactInfo";
 import SmartGoals from "./pages/SmartGoals";
 import CalendarView from "./pages/CalendarView";
+import AddUser from "./pages/AddUser";
 
 function App() {
   const CLIENT_ID = "CLIENT_ID"; //this value comes from Fitbit (we will want to change this to an environment variable?)
@@ -34,6 +35,7 @@ function App() {
         <Route path="/friday" element={<Friday CLIENT_ID={CLIENT_ID} />} />
         <Route path="/saturday" element={<Saturday CLIENT_ID={CLIENT_ID} />} />
         <Route path="/redcap" element={<Redcap CLIENT_ID={CLIENT_ID} />} />
+        <Route path="/adduser" element={<AddUser CLIENT_ID={CLIENT_ID} />} />
         <Route
           path="/contact-info"
           element={<ContactInfo CLIENT_ID={CLIENT_ID} />}

@@ -13,6 +13,7 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import CalendarViewIcon from "@mui/icons-material/CalendarMonth"
 import WeekSelectorDropdown from "./WeekSelectorDropdown";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
+import AddIcon from "@mui/icons-material/Add";
 
 const NavDrawer = ({ userData }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); //initial state of the NavDrawer is false/closed
@@ -67,6 +68,16 @@ const NavDrawer = ({ userData }) => {
                     Long-Term SMART Goals
                   </Typography>
                 }
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton href="/adduser">
+              <ListItemIcon>
+                <AddIcon style={{ fontSize: 42, color: "#548235" }} />
+              </ListItemIcon>
+              <ListItemText
+                primary={<Typography variant="button">Add User</Typography>}
               />
             </ListItemButton>
           </ListItem>
