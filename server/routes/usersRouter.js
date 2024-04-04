@@ -19,9 +19,11 @@ const scopes = [
   "weight",
 ];
 require("dotenv/config");
-const { v4: uuidv4 } = require("uuid");
 const axios = require("axios");
 const mongoose = require("mongoose");
+
+let userId;
+let codeVerifier;
 
 /*
   Callback from the Fitbit User Authorization
@@ -29,17 +31,18 @@ const mongoose = require("mongoose");
 usersRouter.get("/newUser/callback/", async (req, res) => {
   // get the authorization code, userId, and codeVerifier
   const authorizationCode = req.query.code;
-  const userId = req.query.userId;
-  const codeVerifier = req.query.codeVerifier;
+
+  console.log("userId: " + userId);
+  console.log("codeVerifier: " + codeVerifier);
 
   if (!authorizationCode) {
     return res.status(400).send("Authorization Code not Provided.");
   }
   if (!userId) {
-    return res.status(400).send("UserId Not Provided.");
+    return res.status(400).send("UserId Not Recieved in Session.");
   }
   if (!codeVerifier) {
-    return res.status(400).send("Code Verifier Not Provided.");
+    return res.status(400).send("Code Verifier Not Recieved in Session.");
   }
 
   // post to Fitbit API to get access token and refresh token
@@ -54,21 +57,21 @@ usersRouter.get("/newUser/callback/", async (req, res) => {
   const base64AuthString = Buffer.from(authString).toString("base64");
   const response = await axios.post(url, null, {
     headers: {
-      Authorization: base64AuthString,
+      Authorization: `Basic ${base64AuthString}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
-  const tokensData = await response.json();
+  const tokensData = await response.data;
 
   // update the user information in MongoDB
   const mongoUser = await userSchema.Users.findById(userId);
   if (!mongoUser) {
     return res.status(404).send("User not found");
   }
-  user.accessToken = tokensData.access_token;
-  user.refreshToken = tokensData.refresh_token;
-  user.lastUpdated = new Date();
-  user.fitbitUsername = tokensData.user_id;
+  mongoUser.accessToken = tokensData.access_token;
+  mongoUser.refreshToken = tokensData.refresh_token;
+  mongoUser.lastUpdated = new Date();
+  mongoUser.fitbitUsername = tokensData.user_id;
 
   try {
     const saveUser = await mongoUser.save();
@@ -131,7 +134,7 @@ usersRouter.post("/newUser", async (req, res) => {
     emergencyContact2: emergencyContact2,
   };
 
-  const userId = new mongoose.Types.ObjectId();
+  userId = new mongoose.Types.ObjectId(); // probably not a good idea to set things like this
 
   const userData = {
     _id: userId,
@@ -149,16 +152,15 @@ usersRouter.post("/newUser", async (req, res) => {
   try {
     const saveUser = await newUser.save();
     if (saveUser) {
-      const codeVerifier = getCodeVerifier();
+      codeVerifier = getCodeVerifier(); // probably not a good idea to set things like this
       const codeChallenge = await getCodeChallenge(codeVerifier);
       const authorizationURL = getAuthorizationURL(
         process.env.CLIENT_ID,
         codeChallenge,
         scopes
       );
-      res.send(
-        `${authorizationURL}&userId=${userId}&codeVerifier=${codeVerifier}`
-      );
+
+      res.send(`${authorizationURL}`);
     } else {
       res.send("Failed to save new user.");
     }

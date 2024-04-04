@@ -37,7 +37,7 @@ const AddUserSurvey = () => {
 
       await axios
         .post("http://localhost:4000/users/newUser", postData)
-        .then((res) => console.log(res.data));
+        .then((res) => (window.location.href = res.data));
     };
 
     axiosPostData();
