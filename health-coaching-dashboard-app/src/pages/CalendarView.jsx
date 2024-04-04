@@ -1,12 +1,14 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import CalendarLayout from '../components/CalendarLayout';
 import PageHeading from "../components/PageHeading";
 
-const CalendarView = ({ CLIENT_ID }) => {
+export default class Calendar extends Component {
+    render(){
     return (
-      <>
-        <PageHeading headingText={`Program Calendar View`}/>
-      </>
+      <div className="calendar-view">
+        <PageHeading headingText="Program Calendar View" />  
+        <CalendarLayout/> 
+      </div>
     );
+  }
 }
-  
-  export default CalendarView;
