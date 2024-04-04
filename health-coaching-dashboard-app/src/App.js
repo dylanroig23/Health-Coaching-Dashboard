@@ -14,7 +14,6 @@ import CallbackHandler from "./pages/CallbackHandler";
 import Redcap from "./pages/Redcap";
 import ContactInfo from "./pages/ContactInfo";
 import SmartGoals from "./pages/SmartGoals";
-import CalendarView from "./pages/CalendarView";
 import AddUser from "./pages/AddUser";
 import CalendarView from "./pages/CalendarView";
 
