@@ -10,7 +10,6 @@ import ListItemText from "@mui/material/ListItemText";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import EditNoteIcon from "@mui/icons-material/EditNote";
-//import calendar view icon
 import CalendarViewIcon from "@mui/icons-material/CalendarMonth"
 import WeekSelectorDropdown from "./WeekSelectorDropdown";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";

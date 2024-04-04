@@ -14,6 +14,7 @@ import CallbackHandler from "./pages/CallbackHandler";
 import Redcap from "./pages/Redcap";
 import ContactInfo from "./pages/ContactInfo";
 import SmartGoals from "./pages/SmartGoals";
+import CalendarView from "./pages/CalendarView";
 
 function App() {
   const CLIENT_ID = "23RWNL"; //this value comes from Fitbit (we will want to change this to an environment variable?)
@@ -40,6 +41,10 @@ function App() {
         <Route
           path="/smart-goals"
           element={<SmartGoals CLIENT_ID={CLIENT_ID} />}
+        />
+        <Route
+          path="/calendar-view"
+          element={<CalendarView CLIENT_ID={CLIENT_ID} />}
         />
         <Route
           path="/authorize"
