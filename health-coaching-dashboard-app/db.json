@@ -1,15 +1,3 @@
 {
-  "users": [
-    {
-      "id": "8dda",
-      "firstName": "n",
-      "lastName": "y",
-      "username": "j",
-      "codeVerifier": "Sj6V_2NgBCtZAtXgt5pp~W~t0gI5ckQrMC.2iEW7oD92oFku1mWTrukYaW4Kr5C1zPhhiX2vjMd.WWeAp0wuW45JnT~9GFUo1.Yje4xZaP4g3wftoamQUI9X.a0cgzq.",
-      "codeChallenge": "W62j7meN3M5oPUzdBAu23RdafcIaW7HUYNtkRtz0ogk",
-      "startDate": "2024-02-15T05:00:00.000Z",
-      "dateOfInterest": "2024-02-15",
-      "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1JXTkwiLCJzdWIiOiJCWFM2WEsiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJzZXQgcm94eSBybnV0IHJwcm8gcnNsZSByYWN0IHJsb2MgcnJlcyByd2VpIHJociBydGVtIiwiZXhwIjoxNzExNjk5NDg4LCJpYXQiOjE3MTE2NzA2ODh9.QgamSKlbqBwJbrayrJ2hXGKKKMhLJl0U846Rus4VxF0"
-    }
-  ]
+  "users": []
 }
