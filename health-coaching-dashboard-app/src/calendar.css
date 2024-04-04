@@ -1,12 +1,12 @@
 .calendar {
     width: 100%;
-    max-width: 900px; /* Limiting width for better readability */
-    margin: 0 auto; /* Center the calendar horizontally */
+    max-width: 900px; 
+    margin: 0 auto; 
     font-family: Arial, sans-serif;
 }
 
 .calendar-month {
-    margin-bottom: 20px; /* Add spacing between months */
+    margin-bottom: 20px; 
 }
 
 .calendar-table {
@@ -16,39 +16,35 @@
 
 .calendar-table th,
 .calendar-table td {
-    width: calc(100% / 7); /* Equal width for each day column */
-    height: 75px; /* Adjust height as needed */
-    border: 1px solid #ddd; /* Border for each cell */
+    width: calc(100% / 7);
+    height: 75px; 
+    border: 1px solid #ddd; 
     text-align: center;
 }
 
 .calendar-table th {
-    background-color: #f2f2f2; /* Background color for weekday headers */
+    background-color: #f2f2f2; 
     font-weight: bold;
 }
 
 .calendar-day {
-    cursor: pointer; /* Show pointer cursor on hover */
+    cursor: pointer; 
 }
 
 .calendar-day:hover {
-    background-color: #f0f0f0; /* Highlight cell on hover */
+    background-color: #f0f0f0; 
 }
 
 .current-week {
-    background-color: yellow; /* Highlight current week */
-}
-
-.last-week {
-    background-color: orange; /* Highlight last week */
+    background-color: yellow; /*highlight for the current week */
 }
 
 .green-highlight {
-    background-color: lightgreen; /* Highlight weeks from Feb 11th to last week */
+    background-color: lightgreen; /*highlight for weeks completed*/
 }
 
 .orange-highlight {
-    background-color: orange; /* Highlight 12th week from Feb 11th */
+    background-color: orange; /*highlight for the 12th week*/
 }
 
 

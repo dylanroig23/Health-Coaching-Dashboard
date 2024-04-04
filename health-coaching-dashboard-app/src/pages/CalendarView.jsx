@@ -7,10 +7,7 @@ export default class Calendar extends Component {
     return (
       <div className="calendar-view">
         <PageHeading headingText="Program Calendar View" />  
-<<<<<<< Updated upstream
-=======
         {/*the CalendarLayout component holds all the logic for building out the calendars and highlighting*/}
->>>>>>> Stashed changes
         <CalendarLayout/> 
       </div>
     );
