@@ -16,6 +16,7 @@ import ContactInfo from "./pages/ContactInfo";
 import SmartGoals from "./pages/SmartGoals";
 import CalendarView from "./pages/CalendarView";
 import AddUser from "./pages/AddUser";
+import CalendarView from "./pages/CalendarView";
 
 function App() {
   const CLIENT_ID = "CLIENT_ID"; //this value comes from Fitbit (we will want to change this to an environment variable?)

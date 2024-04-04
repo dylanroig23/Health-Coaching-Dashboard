@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
+=======
+/* This file contains the logic for the calendar layouts and calendar highlighting.
+Some of this file contains hard-coding/non-dynamic logic due to database constraints.
+*/
+>>>>>>> Stashed changes
 import React from 'react';
 import '../calendar.css';
 
@@ -11,6 +17,10 @@ class CalendarLayout extends React.Component {
     render() {
         return (
             <div className="calendar">
+<<<<<<< Updated upstream
+=======
+                {/*these months are dummy data/hard-coded based on when we started building the dashboard */}
+>>>>>>> Stashed changes
                 {this.renderMonthCalendar(2024, 1)} {/* February 2024 */}
                 {this.renderMonthCalendar(2024, 2)} {/* March 2024 */}
                 {this.renderMonthCalendar(2024, 3)} {/* April 2024 */}
