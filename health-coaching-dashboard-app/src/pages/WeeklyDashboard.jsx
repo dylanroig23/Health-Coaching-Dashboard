@@ -8,7 +8,6 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
 import WeeklyZoneMinutesChart from "../components/WeeklyZoneMinutesChart";
 import WeeklyZonevsSleepChart from "../components/WeeklyZonevsSleepChart";
 import WeeklyStepsChart from "../components/WeeklyStepsChart";
@@ -17,7 +16,6 @@ import WeeklyServingsOfFruitsChart from "../components/WeeklyServingsOfFruit";
 import WeeklyServingsOfVegetablesChart from "../components/WeeklyServingsOfVegetablesChart";
 import WeeklyActivityCompletion from "../components/WeeklyActivityCompletion";
 import WeeklySmartGoals from "../components/WeeklySmartGoals";
-import UserList from "../components/UserList";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({

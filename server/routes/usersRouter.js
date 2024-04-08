@@ -169,4 +169,16 @@ usersRouter.post("/newUser", async (req, res) => {
   }
 });
 
+/*
+  Return a list of all users
+*/
+usersRouter.get("/allusers", async (req, res) => {
+  try {
+    const allUsers = await userSchema.Users.find({});
+    res.json(allUsers);
+  } catch (error) {
+    res.status(500).send("Error fetching users: " + error.message);
+  }
+});
+
 module.exports = usersRouter;

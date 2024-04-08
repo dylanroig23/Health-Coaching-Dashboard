@@ -1,13 +1,10 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import WeeklyDashboard from "../pages/WeeklyDashboard";
 import Button from "@mui/material/Button";
 import PageHeading from "../components/PageHeading";
 import Container from "@mui/material/Container";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-const UserDB = "http://localhost:5000/users";
 
 const UserList = () => {
   const navigate = useNavigate();
@@ -30,10 +27,12 @@ const UserList = () => {
 
   const fetchUsers = async () => {
     try {
-      const userResponse = await fetch("http://localhost:5000/users");
+      const userResponse = await fetch(
+        `${process.env.REACT_APP_DB_URI}/users/allusers`
+      );
       const userData = await userResponse.json();
-      console.log("fetchusers");
-      console.log(userData);
+      //   console.log("fetchusers");
+      //   console.log(userData);
       setUserData(userData);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -42,8 +41,6 @@ const UserList = () => {
 
   useEffect(() => {
     fetchUsers();
-    console.log("test");
-    console.log(userData);
   }, []);
 
   if (userData != null) {
@@ -54,9 +51,11 @@ const UserList = () => {
           fromWeekly={false}
         ></PageHeading>
         {userData.map((user) => (
-          <li style={{ listStyle: "none", margin: "10px" }}>
-            <Patient key={user.id} href="/">
-              {user.firstName}
+          <li key={user._id} style={{ listStyle: "none", margin: "10px" }}>
+            <Patient key={user._id} href="/">
+              {user.contactInformation.firstName +
+                " " +
+                user.contactInformation.lastName}
             </Patient>
           </li>
         ))}
