@@ -17,6 +17,7 @@ import WeeklyServingsOfFruitsChart from "../components/WeeklyServingsOfFruit";
 import WeeklyServingsOfVegetablesChart from "../components/WeeklyServingsOfVegetablesChart";
 import WeeklyActivityCompletion from "../components/WeeklyActivityCompletion";
 import WeeklySmartGoals from "../components/WeeklySmartGoals";
+import UserList from "../components/UserList";
 
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({

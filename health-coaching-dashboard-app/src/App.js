@@ -16,14 +16,16 @@ import ContactInfo from "./pages/ContactInfo";
 import SmartGoals from "./pages/SmartGoals";
 import AddUser from "./pages/AddUser";
 import CalendarView from "./pages/CalendarView";
+import UserList from "./components/UserList";
 
 function App() {
-  const CLIENT_ID = "23RS5Y"; //this value comes from Fitbit (we will want to change this to an environment variable?)
+  const CLIENT_ID = "CLIENT_ID"; //this value comes from Fitbit (we will want to change this to an environment variable?)
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<WeeklyDashboard CLIENT_ID={CLIENT_ID} />} />
+        <Route path="/userlist" element={<UserList CLIENT_ID={CLIENT_ID} />} />
         <Route path="/sunday" element={<Sunday CLIENT_ID={CLIENT_ID} />} />
         <Route path="/monday" element={<Monday CLIENT_ID={CLIENT_ID} />} />
         <Route path="/tuesday" element={<Tuesday CLIENT_ID={CLIENT_ID} />} />
