@@ -34,7 +34,7 @@ mongoose
 app.use(
   session({
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     secret: "secret",
     store: MongoStore.create({
       mongoUrl: process.env.DB_URI,

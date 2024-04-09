@@ -181,4 +181,50 @@ usersRouter.get("/allusers", async (req, res) => {
   }
 });
 
+/*
+  Sets the current user
+*/
+usersRouter.post("/setcurrentuser", async (req, res) => {
+  const { userId } = req.body;
+  const mongoUser = await userSchema.Users.find({ _id: userId });
+
+  const lastUpdated = new Date(mongoUser[0].lastUpdated);
+  const currDate = new Date();
+  const timeDifference = currDate - lastUpdated;
+  const hoursDifference = timeDifference / (1000 * 60 * 60);
+
+  // if the hours difference is > 8 then we need a new access token
+  if (hoursDifference > 8) {
+    const refreshUrl = "https://api.fitbit.com/oauth2/token";
+    const url = new URL(refreshUrl);
+    url.searchParams.append("grant_type", "refresh_token");
+    url.searchParams.append("refresh_token", mongoUser[0].refreshToken);
+    const authString = `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`;
+    const base64AuthString = Buffer.from(authString).toString("base64");
+    const response = await axios.post(url, null, {
+      headers: {
+        Authorization: `Basic ${base64AuthString}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+    const tokensData = await response.data;
+    mongoUser[0].accessToken = tokensData.access_token;
+    mongoUser[0].refreshToken = tokensData.refresh_token;
+    mongoUser[0].lastUpdated = new Date();
+
+    try {
+      const saveUser = await mongoUser[0].save();
+      if (saveUser) {
+        req.session.currUser = userId;
+        res.send("User Updated Successfully and Current User Set.");
+      }
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  } else {
+    req.session.currUser = userId;
+    res.send("Current User has been Set");
+  }
+});
+
 module.exports = usersRouter;

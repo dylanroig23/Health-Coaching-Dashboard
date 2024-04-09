@@ -5,6 +5,7 @@ import PageHeading from "../components/PageHeading";
 import Container from "@mui/material/Container";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const UserList = () => {
   const navigate = useNavigate();
@@ -25,6 +26,16 @@ const UserList = () => {
     },
   }));
 
+  const userClicked = async (userId) => {
+    const postData = {
+      userId: userId,
+    };
+
+    await axios
+      .post("http://localhost:4000/users/setcurrentuser", postData)
+      .then((res) => console.log(res));
+  };
+
   const fetchUsers = async () => {
     try {
       const userResponse = await fetch(
@@ -33,7 +44,7 @@ const UserList = () => {
       const userData = await userResponse.json();
       //   console.log("fetchusers");
       //   console.log(userData);
-      setUserData(userData);
+      await setUserData(userData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -52,7 +63,7 @@ const UserList = () => {
         ></PageHeading>
         {userData.map((user) => (
           <li key={user._id} style={{ listStyle: "none", margin: "10px" }}>
-            <Patient key={user._id} href="/">
+            <Patient key={user._id} onClick={() => userClicked(user._id)}>
               {user.contactInformation.firstName +
                 " " +
                 user.contactInformation.lastName}
