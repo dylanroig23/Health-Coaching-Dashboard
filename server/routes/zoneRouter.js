@@ -1,9 +1,10 @@
 const express = require("express");
-const sleepRouter = express.Router();
-const sleepSchema = require("../models/sleepDataSchema");
+const zoneRouter = express.Router();
+const zoneSchema = require("../models/zoneDataSchema");
+
 const getWeeksArray = require("../helper-scripts/getWeeksArray");
 
-sleepRouter.post("/newUser", async (req, res) => {
+zoneRouter.post("/newUser", async (req, res) => {
   const { userId, startDate } = req.body;
   const weeksArray = getWeeksArray(startDate, 12);
 
@@ -128,7 +129,7 @@ sleepRouter.post("/newUser", async (req, res) => {
     sundaySteps: "0",
   };
 
-  const userSleepData = {
+  const userZoneData = {
     _id: userId,
     week1: week1,
     week2: week2,
@@ -144,17 +145,17 @@ sleepRouter.post("/newUser", async (req, res) => {
     week12: week12,
   };
 
-  const newUser = new sleepSchema.Sleep(userSleepData);
+  const newUser = new zoneSchema.Zone(userZoneData);
   try {
     const saveUser = await newUser.save();
     if (saveUser) {
-      res.send("User Steps Schema added");
+      res.send("User Zone Schema added");
     } else {
-      res.send("Failed to have Steps Schema added");
+      res.send("Failed to have Zone Schema added");
     }
   } catch (error) {
     res.status(500).send("Error occurred: " + error.message);
   }
 });
 
-module.exports = sleepRouter;
+module.exports = zoneRouter;

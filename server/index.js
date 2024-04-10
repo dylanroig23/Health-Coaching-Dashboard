@@ -7,6 +7,7 @@ const MongoStore = require("connect-mongo");
 const sleepRouter = require("./routes/sleepRouter");
 const usersRouter = require("./routes/usersRouter");
 const stepsRouter = require("./routes/stepsRouter");
+const zoneRouter = require("./routes/zoneRouter");
 const cookieParser = require("cookie-parser");
 require("dotenv/config");
 
@@ -48,9 +49,10 @@ app.use(
 );
 
 // Mount routers
-app.use("/sleepData", sleepRouter);
 app.use("/users", usersRouter);
 app.use("/stepsData", stepsRouter);
+app.use("/zoneData", zoneRouter);
+app.use("/sleepData", sleepRouter);
 
 // Start server
 const port = process.env.PORT || 4000;

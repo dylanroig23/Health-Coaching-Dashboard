@@ -160,10 +160,25 @@ usersRouter.post("/newUser", async (req, res) => {
         scopes
       );
 
+      // post steps schema
       const stepsPostData = { userId: userId, startDate: startDate };
       await axios.post(
         `${process.env.SERVER_URI}/stepsData/newUser`,
         stepsPostData
+      );
+
+      // post zone schema
+      const zonePostData = { userId: userId, startDate: startDate };
+      await axios.post(
+        `${process.env.SERVER_URI}/zoneData/newUser`,
+        zonePostData
+      );
+
+      // post sleep schema
+      const sleepPostData = { userId: userId, startDate: startDate };
+      await axios.post(
+        `${process.env.SERVER_URI}/sleepData/newUser`,
+        sleepPostData
       );
 
       res.send(`${authorizationURL}`);
