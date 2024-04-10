@@ -32,8 +32,8 @@ usersRouter.get("/newUser/callback/", async (req, res) => {
   // get the authorization code, userId, and codeVerifier
   const authorizationCode = req.query.code;
 
-  console.log("userId: " + userId);
-  console.log("codeVerifier: " + codeVerifier);
+  // console.log("userId: " + userId);
+  // console.log("codeVerifier: " + codeVerifier);
 
   if (!authorizationCode) {
     return res.status(400).send("Authorization Code not Provided.");
@@ -76,7 +76,7 @@ usersRouter.get("/newUser/callback/", async (req, res) => {
   try {
     const saveUser = await mongoUser.save();
     if (saveUser) {
-      res.send("User Updated Successfully");
+      res.redirect("http://localhost:3000/userlist");
     }
   } catch (error) {
     res.status(500).send(error);
@@ -158,6 +158,12 @@ usersRouter.post("/newUser", async (req, res) => {
         process.env.CLIENT_ID,
         codeChallenge,
         scopes
+      );
+
+      const stepsPostData = { userId: userId, startDate: startDate };
+      await axios.post(
+        `${process.env.SERVER_URI}/stepsData/newUser`,
+        stepsPostData
       );
 
       res.send(`${authorizationURL}`);

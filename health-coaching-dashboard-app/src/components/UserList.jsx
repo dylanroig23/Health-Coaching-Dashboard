@@ -32,7 +32,7 @@ const UserList = () => {
     };
 
     await axios
-      .post("http://localhost:4000/users/setcurrentuser", postData)
+      .post(`${process.env.REACT_APP_DB_URI}/users/setcurrentuser`, postData)
       .then((res) => console.log(res));
   };
 

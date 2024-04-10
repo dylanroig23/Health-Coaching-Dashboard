@@ -13,10 +13,10 @@ const AddUserSurvey = () => {
   survey.onComplete.add((sender, options) => {
     const dataJSON = sender.data;
 
-    const axiosPostData = async () => {
+    const axiosPostNewUser = async () => {
       const postData = {
         name: dataJSON.firstName,
-        startDate: "15-02-2024", //this should be today's date
+        startDate: "2024-02-15", //this should be today's date
         fitbitUsername: dataJSON.fitbitUsername,
         firstName: dataJSON.firstName,
         lastName: dataJSON.lastName,
@@ -36,11 +36,11 @@ const AddUserSurvey = () => {
       };
 
       await axios
-        .post("http://localhost:4000/users/newUser", postData)
+        .post(`${process.env.REACT_APP_DB_URI}/users/newUser`, postData)
         .then((res) => (window.location.href = res.data));
     };
 
-    axiosPostData();
+    axiosPostNewUser();
   });
 
   return <Survey model={survey} />;
