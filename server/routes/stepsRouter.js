@@ -2,6 +2,8 @@ const express = require("express");
 const stepsRouter = express.Router();
 const stepsSchema = require("../models/stepsDataSchema");
 const getWeeksArray = require("../helper-scripts/getWeeksArray");
+const getFitbitStepsData = require("../helper-scripts/getFitbitStepsData");
+const axios = require("axios");
 
 stepsRouter.post("/newUser", async (req, res) => {
   const { userId, startDate } = req.body;
@@ -165,6 +167,22 @@ stepsRouter.get("/weekData", async (req, res) => {
     week: weekToGet,
   });
 
+  //find the current user in the 'users' collection to get their encoded ID
+  //as well as their access token
+  let encodedID;
+  let accessToken;
+  await axios
+    .get(`${process.env.SERVER_URI}/users/apicreds`)
+    .then((response) => {
+      encodedID = response.data.encodedID;
+      accessToken = response.data.accessToken;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  // check if all zero too
+
   if (weekData) {
     // check if the requested week's start date has already occurred
     // if it has, check to see if the date is within 6 days of the current date
@@ -180,11 +198,15 @@ stepsRouter.get("/weekData", async (req, res) => {
 
     if (hasOccurred && withinLastSixDays) {
       //make an API request to FitBit
+      const stepsData = getFitbitStepsData(startDate, encodedID, accessToken);
+      res.status(200).send(stepsData);
     } else if (hasOccurred) {
       //make a request to the database, it has occurred but not within the last 6 days so all data
       //is already there
+      //format it and return it
     } else {
       //report that the date has not yet occured and display no data, maybe return null
+      res.status(404).send("Weeks Data was not Found");
     }
   } else {
     res.status(500).send("Could not find the week data");

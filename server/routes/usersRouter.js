@@ -259,4 +259,33 @@ usersRouter.post("/setweekofinterest", async (req, res) => {
   res.send("Week of Interest Updated");
 });
 
+/*
+  Gets the requested users access token and encoded ID
+  these values are needed for Fitbit API calls
+*/
+usersRouter.get("/apicreds", async (req, res) => {
+  try {
+    const currUserId = req.session.userId;
+    const mongoUser = await userSchema.Users.find({ _id: currUserId });
+
+    // Check if user exists
+    if (!mongoUser || mongoUser.length() === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const mongoUserEncodedID = mongoUser[0].fitbitUsername;
+    const mongoUserAccessToken = mongoUser[0].accessToken;
+
+    // Return both values to the caller
+    res.status(200).json({
+      encodedID: mongoUserEncodedID,
+      accessToken: mongoUserAccessToken,
+    });
+  } catch (error) {
+    // Handle any errors that might occur during the process
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 module.exports = usersRouter;
