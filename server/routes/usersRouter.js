@@ -237,6 +237,7 @@ usersRouter.post("/setcurrentuser", async (req, res) => {
       const saveUser = await mongoUser[0].save();
       if (saveUser) {
         req.session.currUser = userId;
+        req.session.weekOfInterest = "week1";
         res.send("User Updated Successfully and Current User Set.");
       }
     } catch (error) {
@@ -244,8 +245,18 @@ usersRouter.post("/setcurrentuser", async (req, res) => {
     }
   } else {
     req.session.currUser = userId;
+    req.session.weekOfInterest = "week1";
     res.send("Current User has been Set");
   }
+});
+
+/*
+  Sets the Week of Interest to look at on the Dashboard
+*/
+usersRouter.post("/setweekofinterest", async (req, res) => {
+  const { weekOfInterest } = req.body;
+  req.session.weekOfInterest = weekOfInterest;
+  res.send("Week of Interest Updated");
 });
 
 module.exports = usersRouter;

@@ -157,4 +157,38 @@ stepsRouter.post("/newUser", async (req, res) => {
   }
 });
 
+stepsRouter.get("/weekData", async (req, res) => {
+  const weekToGet = req.session.weekOfInterest;
+  const userId = req.session.userId;
+  const weekData = await stepsSchema.Steps.find({
+    _id: userId,
+    week: weekToGet,
+  });
+
+  if (weekData) {
+    // check if the requested week's start date has already occurred
+    // if it has, check to see if the date is within 6 days of the current date
+    const startDate = new Date(weekData.startDate);
+    const currentDate = new Date();
+    const hasOccurred = startDate <= currentDate;
+    let withinLastSixDays = false;
+    if (hasOccurred) {
+      const timeDiff = currentDate.getTime() - givenDate.getTime();
+      const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+      withinLastSixDays = daysDiff <= 6;
+    }
+
+    if (hasOccurred && withinLastSixDays) {
+      //make an API request to FitBit
+    } else if (hasOccurred) {
+      //make a request to the database, it has occurred but not within the last 6 days so all data
+      //is already there
+    } else {
+      //report that the date has not yet occured and display no data, maybe return null
+    }
+  } else {
+    res.status(500).send("Could not find the week data");
+  }
+});
+
 module.exports = stepsRouter;
