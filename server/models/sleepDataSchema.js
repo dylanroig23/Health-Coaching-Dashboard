@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const WeekDataSchema = new Schema({
   startDate: { type: String },
-  mondaySteps: { type: String },
-  tuesdaySteps: { type: String },
-  wednesdaySteps: { type: String },
-  thursdaySteps: { type: String },
-  fridaySteps: { type: String },
-  saturdaySteps: { type: String },
-  sundaySteps: { type: String },
+  mondaySleep: { type: String },
+  tuesdaySleep: { type: String },
+  wednesdaySleep: { type: String },
+  thursdaySleep: { type: String },
+  fridaySleep: { type: String },
+  saturdaySleep: { type: String },
+  sundaySleep: { type: String },
 });
 
 const sleepDataSchema = new Schema({
