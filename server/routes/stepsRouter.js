@@ -274,31 +274,31 @@ stepsRouter.get("/weekData", async (req, res) => {
       const formattedStepsData = [
         {
           day: "Sun.",
-          duration: 0,
+          steps: 0,
         },
         {
           day: "Mon.",
-          duration: 0,
+          steps: 0,
         },
         {
           day: "Tues.",
-          duration: 0,
+          steps: 0,
         },
         {
           day: "Wed.",
-          duration: 0,
+          steps: 0,
         },
         {
           day: "Thurs.",
-          duration: 0,
+          steps: 0,
         },
         {
           day: "Fri.",
-          duration: 0,
+          steps: 0,
         },
         {
           day: "Sat.",
-          duration: 0,
+          steps: 0,
         },
       ];
 

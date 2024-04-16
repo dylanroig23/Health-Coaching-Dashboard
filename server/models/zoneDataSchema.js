@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const WeekDataSchema = new Schema({
   startDate: { type: String },
-  mondaySteps: { type: String },
-  tuesdaySteps: { type: String },
-  wednesdaySteps: { type: String },
-  thursdaySteps: { type: String },
-  fridaySteps: { type: String },
-  saturdaySteps: { type: String },
-  sundaySteps: { type: String },
+  mondayZone: { type: String },
+  tuesdayZone: { type: String },
+  wednesdayZone: { type: String },
+  thursdayZone: { type: String },
+  fridayZone: { type: String },
+  saturdayZone: { type: String },
+  sundayZone: { type: String },
 });
 
 const zoneDataSchema = new Schema({
