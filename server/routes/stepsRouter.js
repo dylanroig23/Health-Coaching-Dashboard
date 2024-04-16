@@ -237,19 +237,19 @@ stepsRouter.get("/weekData", async (req, res) => {
             weekData.sundaySteps = dayData.steps.toString();
             break;
           case "Mon.":
-            weekData.mondayStepsSteps = dayData.steps.toString();
+            weekData.mondaySteps = dayData.steps.toString();
             break;
           case "Tues.":
-            weekData.tuesdayStepsSteps = dayData.steps.toString();
+            weekData.tuesdaySteps = dayData.steps.toString();
             break;
           case "Wed.":
-            weekData.wednesdayStepsSteps = dayData.steps.toString();
+            weekData.wednesdaySteps = dayData.steps.toString();
             break;
           case "Thurs.":
-            weekData.thursdayStepsSteps = dayData.steps.toString();
+            weekData.thursdaySteps = dayData.steps.toString();
             break;
           case "Fri.":
-            weekData.fridayStepsSteps = dayData.steps.toString();
+            weekData.fridaySteps = dayData.steps.toString();
             break;
           case "Sat.":
             weekData.saturdaySteps = dayData.steps.toString();
@@ -261,9 +261,9 @@ stepsRouter.get("/weekData", async (req, res) => {
       });
 
       try {
-        await weeksData[0][weekToGet].save();
+        await weeksData[0].save();
       } catch (error) {
-        res.status(500).send("Error updating week of interest: " + error);
+        console.log(error);
       }
 
       res.status(200).send(stepsData);

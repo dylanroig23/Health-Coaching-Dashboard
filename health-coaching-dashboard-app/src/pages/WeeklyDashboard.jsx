@@ -30,6 +30,7 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
   const navigate = useNavigate();
   // the user data that is initially fetched on launch
   const [userData, setUserData] = useState(null);
+  const [userName, setUserName] = useState("");
 
   // fetches data from the json server, just gets the entire users table
   const fetchData = async () => {
@@ -44,7 +45,14 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
 
       const userData = await userResponse.json();
       setUserData(userData);
-      console.log(userData);
+
+      if (userData) {
+        const sessionUserRes = await fetch(
+          `${process.env.REACT_APP_DB_URI}/users/sessionUser`
+        );
+        const resData = await sessionUserRes.json();
+        setUserName(resData[0].name);
+      }
     } catch (error) {
       console.log("no session current session data");
       window.location.href = "/adduser";
@@ -61,7 +69,7 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
       <>
         <PageHeading
           // headingText={`Welcome to ${userData[0].firstName}'s Weekly Overview`}
-          headingText={"Place Holder Text"}
+          headingText={`Welcome to ${userName}'s Weekly Overview`}
           userData={userData}
           fromWeekly={true}
         />
