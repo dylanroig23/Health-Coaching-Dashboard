@@ -312,4 +312,26 @@ usersRouter.get("/apicreds", async (req, res) => {
   }
 });
 
+/*
+  Gets the Current User in the Session's Data
+*/
+usersRouter.get("/sessionUser", async (req, res) => {
+  try {
+    let currUserId;
+    await axios
+      .get(`${process.env.SERVER_URI}/sessionManager/sessionInfo`)
+      .then((response) => {
+        currUserId = response.data.currentUser;
+      });
+    const mongoUser = await userSchema.Users.find({ _id: currUserId });
+    if (!mongoUser || mongoUser.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json(mongoUser);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = usersRouter;

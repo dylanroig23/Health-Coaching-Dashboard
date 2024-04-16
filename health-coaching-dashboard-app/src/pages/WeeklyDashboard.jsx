@@ -34,18 +34,20 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
   // fetches data from the json server, just gets the entire users table
   const fetchData = async () => {
     try {
-      const userResponse = await fetch("http://localhost:5000/users");
+      const userResponse = await fetch(
+        `${process.env.REACT_APP_DB_URI}/sessionManager/sessionInfo`
+      );
+
+      if (!userResponse.ok) {
+        throw new Error("Failed to fetch the session data");
+      }
+
       const userData = await userResponse.json();
-
-      if (userData && userData.length > 0) {
-        setUserData(userData);
-      }
-
-      if (!userData) {
-        navigate("/adduser");
-      }
+      setUserData(userData);
+      console.log(userData);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.log("no session current session data");
+      window.location.href = "/adduser";
     }
   };
 
@@ -54,12 +56,12 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
     fetchData();
   }, []); // Empty dependency array ensures this effect runs once on mount...I believe
 
-  // if user data exists in the table then display the grid with the graphs
   if (userData) {
     return (
       <>
         <PageHeading
-          headingText={`Welcome to ${userData[0].firstName}'s Weekly Overview`}
+          // headingText={`Welcome to ${userData[0].firstName}'s Weekly Overview`}
+          headingText={"Place Holder Text"}
           userData={userData}
           fromWeekly={true}
         />
@@ -130,39 +132,6 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
         </Container>
       </>
     );
-  } else {
-    // if no users exist then prompt the user to add a user
-    // return (
-    //   <>
-    //     <PageHeading headingText="Please Add a User" />;
-    //     <Container
-    //       maxWidth="sm" // Limiting container width for centering purposes
-    //       sx={{
-    //         display: "flex",
-    //         flexDirection: "column",
-    //         alignItems: "center",
-    //         justifyContent: "center",
-    //       }}
-    //     >
-    //       <Button
-    //         variant="contained"
-    //         size="large" // Making the button larger
-    //         sx={{
-    //           marginTop: 2,
-    //           bgcolor: "#a9d18e",
-    //           border: `2px solid ${"#548235"}`,
-    //           "&:hover": {
-    //             bgcolor: "#548235",
-    //           },
-    //         }} // Adding some top margin for spacing
-    //         onClick={() => navigate("/authorize")}
-    //       >
-    //         Add User
-    //       </Button>
-    //     </Container>
-    //   </>
-    // );
-    navigate("/adduser");
   }
 };
 

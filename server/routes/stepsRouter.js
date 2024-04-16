@@ -229,16 +229,113 @@ stepsRouter.get("/weekData", async (req, res) => {
         encodedID,
         accessToken
       );
-      console.log("stepsRouter:" + JSON.stringify(stepsData, null, 2));
+
+      //update MongoDB
+      stepsData.forEach((dayData) => {
+        switch (dayData.day) {
+          case "Sun.":
+            weekData.sundaySteps = dayData.steps.toString();
+            break;
+          case "Mon.":
+            weekData.mondayStepsSteps = dayData.steps.toString();
+            break;
+          case "Tues.":
+            weekData.tuesdayStepsSteps = dayData.steps.toString();
+            break;
+          case "Wed.":
+            weekData.wednesdayStepsSteps = dayData.steps.toString();
+            break;
+          case "Thurs.":
+            weekData.thursdayStepsSteps = dayData.steps.toString();
+            break;
+          case "Fri.":
+            weekData.fridayStepsSteps = dayData.steps.toString();
+            break;
+          case "Sat.":
+            weekData.saturdaySteps = dayData.steps.toString();
+            break;
+          default:
+            console.log("default case");
+            break;
+        }
+      });
+
+      try {
+        await weeksData[0][weekToGet].save();
+      } catch (error) {
+        res.status(500).send("Error updating week of interest: " + error);
+      }
+
       res.status(200).send(stepsData);
     } else if (hasOccurred) {
       //make a request to the database, it has occurred but not within the last 6 days so all data
       //is already there
       //format it and return it
-      res.send(null);
+      const formattedStepsData = [
+        {
+          day: "Sun.",
+          duration: 0,
+        },
+        {
+          day: "Mon.",
+          duration: 0,
+        },
+        {
+          day: "Tues.",
+          duration: 0,
+        },
+        {
+          day: "Wed.",
+          duration: 0,
+        },
+        {
+          day: "Thurs.",
+          duration: 0,
+        },
+        {
+          day: "Fri.",
+          duration: 0,
+        },
+        {
+          day: "Sat.",
+          duration: 0,
+        },
+      ];
+
+      formattedStepsData.forEach((dayData) => {
+        switch (dayData.day) {
+          case "Sun.":
+            dayData.steps = Number(weekData.sundaySteps);
+            break;
+          case "Mon.":
+            dayData.steps = Number(weekData.mondaySteps);
+            break;
+          case "Tues.":
+            dayData.steps = Number(weekData.tuesdaySteps);
+            break;
+          case "Wed.":
+            dayData.steps = Number(weekData.wednesdaySteps);
+            break;
+          case "Thurs.":
+            dayData.steps = Number(weekData.thursdaySteps);
+            break;
+          case "Fri.":
+            dayData.steps = Number(weekData.fridaySteps);
+            break;
+          case "Sat.":
+            dayData.steps = Number(weekData.saturdaySteps);
+            break;
+          default:
+            console.log("default case");
+            break;
+        }
+      });
+
+      res.send(formattedStepsData);
     } else {
       //report that the date has not yet occured and display no data, maybe return null
-      res.status(404).send("Weeks Data was not Found");
+      console.log(weekData.startDate);
+      res.send("This Week has Not Occurred Yet");
     }
   } else {
     res.status(500).send("Could not find the week data");

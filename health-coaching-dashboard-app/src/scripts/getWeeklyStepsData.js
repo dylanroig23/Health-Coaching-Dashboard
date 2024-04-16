@@ -6,12 +6,12 @@ const fetchWeeklyStepsData = async () => {
         method: "GET",
       }
     );
+
     const responseData = await backendResponse.json();
-    console.log("backend response: " + responseData);
 
     return responseData;
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error(error);
     return null;
   }
 };
@@ -22,5 +22,6 @@ export const getWeeklyStepsData = async () => {
     return stepsData;
   } else {
     console.log("stepsData was null");
+    return null;
   }
 };

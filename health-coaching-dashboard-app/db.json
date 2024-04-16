@@ -1,15 +1,3 @@
 {
-  "users": [
-    {
-      "id": "fc94",
-      "firstName": "Kevin",
-      "lastName": "Reese",
-      "username": "username",
-      "codeVerifier": "SrUEb2D9YLgpU9g7mcq~K2~gNwPYmi-gmqCVvAiPJTM.j2OChLcmFiFzk~IXYHIQAQR4Q~YP4uZPsL3YL~XpSz6Q1MHpv~U2_FKRYWZGK5XNc_HX.iR8xU1FgNjYE6Mj",
-      "codeChallenge": "4Bl_peW3TgBoN0nrlFGIdiTCvkpcUC5WhspQNyRggkw",
-      "startDate": "2024-02-15T05:00:00.000Z",
-      "dateOfInterest": "2024-02-15",
-      "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1JTNVkiLCJzdWIiOiJCWFNEQ1EiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJzZXQgcm94eSBybnV0IHJwcm8gcnNsZSByYWN0IHJsb2MgcnJlcyByd2VpIHJociBydGVtIiwiZXhwIjoxNzEzMjQ4NDI3LCJpYXQiOjE3MTMyMTk2Mjd9.KhHL5s1yDZhEHWILRCW_UpWSiJebR2U9Thh5C2BN3co"
-    }
-  ]
+  "users": []
 }
