@@ -107,5 +107,9 @@
       "saturdayHealthyMeals": "saturday HealthyMeals",
       "sundayHealthyMeals": "sunday HealthyMeals (continue for following weeks)"
     }
+  },
+  "sessionManager": {
+    "currentUser": "the current user that the client wants to see data for",
+    "weekOfInterest": "the weeks data the client whats to view"
   }
 }

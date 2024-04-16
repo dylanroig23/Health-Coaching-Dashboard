@@ -76,7 +76,7 @@ usersRouter.get("/newUser/callback/", async (req, res) => {
   try {
     const saveUser = await mongoUser.save();
     if (saveUser) {
-      res.redirect("http://localhost:3000/userlist");
+      res.redirect(`${process.env.CLIENT_URI}/userlist`);
     }
   } catch (error) {
     res.status(500).send(error);
@@ -236,17 +236,27 @@ usersRouter.post("/setcurrentuser", async (req, res) => {
     try {
       const saveUser = await mongoUser[0].save();
       if (saveUser) {
-        req.session.currUser = userId;
-        req.session.weekOfInterest = "week1";
+        const sessionPost = { currentUser: userId, weekOfInterest: "week1" };
+        await axios.post(
+          `${process.env.SERVER_URI}/sessionManager/newSession`,
+          sessionPost
+        );
         res.send("User Updated Successfully and Current User Set.");
       }
     } catch (error) {
       res.status(500).send(error);
     }
   } else {
-    req.session.currUser = userId;
-    req.session.weekOfInterest = "week1";
-    res.send("Current User has been Set");
+    try {
+      const sessionPost = { currentUser: userId, weekOfInterest: "week1" };
+      await axios.post(
+        `${process.env.SERVER_URI}/sessionManager/newSession`,
+        sessionPost
+      );
+      res.send("Current User has been Set.");
+    } catch (error) {
+      res.status(500).send(error);
+    }
   }
 });
 
@@ -255,8 +265,16 @@ usersRouter.post("/setcurrentuser", async (req, res) => {
 */
 usersRouter.post("/setweekofinterest", async (req, res) => {
   const { weekOfInterest } = req.body;
-  req.session.weekOfInterest = weekOfInterest;
-  res.send("Week of Interest Updated");
+  try {
+    const weekUpdate = { weekOfInterest: weekOfInterest };
+    await axios.put(
+      `${process.env.SERVER_URI}/sessionManager/updateWeekOfInterest`,
+      weekUpdate
+    );
+    res.send("Week of Interest Updated");
+  } catch (error) {
+    res.send("Error updating week of interest: " + error);
+  }
 });
 
 /*
@@ -265,11 +283,17 @@ usersRouter.post("/setweekofinterest", async (req, res) => {
 */
 usersRouter.get("/apicreds", async (req, res) => {
   try {
-    const currUserId = req.session.userId;
+    let currUserId;
+    await axios
+      .get(`${process.env.SERVER_URI}/sessionManager/sessionInfo`)
+      .then((response) => {
+        currUserId = response.data.currentUser;
+      });
+
     const mongoUser = await userSchema.Users.find({ _id: currUserId });
 
     // Check if user exists
-    if (!mongoUser || mongoUser.length() === 0) {
+    if (!mongoUser || mongoUser.length === 0) {
       return res.status(404).json({ error: "User not found" });
     }
 

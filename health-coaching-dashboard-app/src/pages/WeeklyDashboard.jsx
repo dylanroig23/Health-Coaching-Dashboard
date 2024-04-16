@@ -73,7 +73,7 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
                   <WeeklyStepsChart />
                 </Item>
               </Grid>
-              <Grid xs={4}>
+              {/* <Grid xs={4}>
                 <Item elevation={4}>
                   <h1 style={{ padding: 5, paddingLeft: 20 }}>Zone Minutes</h1>
                   <WeeklyZoneMinutesChart />
@@ -124,7 +124,7 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
                   </h1>
                   <WeeklySmartGoals />
                 </Item>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Box>
         </Container>

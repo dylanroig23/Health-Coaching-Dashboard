@@ -34,6 +34,8 @@ const UserList = () => {
     await axios
       .post(`${process.env.REACT_APP_DB_URI}/users/setcurrentuser`, postData)
       .then((res) => console.log(res));
+
+    window.location.href = "/";
   };
 
   const fetchUsers = async () => {

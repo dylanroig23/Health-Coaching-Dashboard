@@ -1,9 +1,17 @@
 async function getFitbitStepsData(firstDate, encodedID, accessToken) {
-  const lastDate = new Date(startDate);
-  lastDate.setDate(startDate.getDate() + 6);
+  const lastDate = new Date(firstDate);
+  lastDate.setDate(firstDate.getDate() + 7);
+  const year = lastDate.getFullYear();
+  const month = String(lastDate.getMonth() + 1).padStart(2, "0");
+  const day = String(lastDate.getDate()).padStart(2, "0");
+  const formattedLastDate = `${year}-${month}-${day}`;
+  const startYear = firstDate.getFullYear();
+  const startMonth = String(firstDate.getMonth() + 1).padStart(2, "0");
+  const startDay = String(firstDate.getDate() + 1).padStart(2, "0");
+  const formattedStartDate = `${startYear}-${startMonth}-${startDay}`;
 
   const response = await fetch(
-    `https://api.fitbit.com/1/user/${encodedID}/activities/steps/date/${firstDate}/${lastDate}.json`,
+    `https://api.fitbit.com/1/user/${encodedID}/activities/steps/date/${formattedStartDate}/${formattedLastDate}.json`,
     {
       method: "GET",
       headers: {
@@ -14,6 +22,7 @@ async function getFitbitStepsData(firstDate, encodedID, accessToken) {
   );
 
   const fitbitStepsData = await response.json();
+
   if (fitbitStepsData != null) {
     const formattedStepsData = [
       {

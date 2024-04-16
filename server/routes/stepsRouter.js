@@ -159,13 +159,28 @@ stepsRouter.post("/newUser", async (req, res) => {
   }
 });
 
+/*
+  Get the Users Step Data
+*/
 stepsRouter.get("/weekData", async (req, res) => {
-  const weekToGet = req.session.weekOfInterest;
-  const userId = req.session.userId;
-  const weekData = await stepsSchema.Steps.find({
+  let userId;
+  let weekToGet;
+
+  await axios
+    .get(`${process.env.SERVER_URI}/sessionManager/sessionInfo`)
+    .then((response) => {
+      userId = response.data.currentUser;
+      weekToGet = response.data.weekOfInterest;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  const weeksData = await stepsSchema.Steps.find({
     _id: userId,
-    week: weekToGet,
   });
+
+  const weekData = weeksData[0][weekToGet];
 
   //find the current user in the 'users' collection to get their encoded ID
   //as well as their access token
@@ -181,8 +196,6 @@ stepsRouter.get("/weekData", async (req, res) => {
       console.log(error);
     });
 
-  // check if all zero too
-
   if (weekData) {
     // check if the requested week's start date has already occurred
     // if it has, check to see if the date is within 6 days of the current date
@@ -191,19 +204,38 @@ stepsRouter.get("/weekData", async (req, res) => {
     const hasOccurred = startDate <= currentDate;
     let withinLastSixDays = false;
     if (hasOccurred) {
-      const timeDiff = currentDate.getTime() - givenDate.getTime();
+      const timeDiff = currentDate.getTime() - startDate.getTime();
       const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
       withinLastSixDays = daysDiff <= 6;
     }
 
-    if (hasOccurred && withinLastSixDays) {
+    let allZero = false;
+    if (
+      weekData.mondaySteps === "0" &&
+      weekData.tuesdaySteps === "0" &&
+      weekData.wednesdaySteps === "0" &&
+      weekData.thursdaySteps === "0" &&
+      weekData.fridaySteps === "0" &&
+      weekData.saturdaySteps === "0" &&
+      weekData.sundaySteps === "0"
+    ) {
+      allZero = true;
+    }
+
+    if ((hasOccurred && withinLastSixDays) || (hasOccurred && allZero)) {
       //make an API request to FitBit
-      const stepsData = getFitbitStepsData(startDate, encodedID, accessToken);
+      const stepsData = await getFitbitStepsData(
+        startDate,
+        encodedID,
+        accessToken
+      );
+      console.log("stepsRouter:" + JSON.stringify(stepsData, null, 2));
       res.status(200).send(stepsData);
     } else if (hasOccurred) {
       //make a request to the database, it has occurred but not within the last 6 days so all data
       //is already there
       //format it and return it
+      res.send(null);
     } else {
       //report that the date has not yet occured and display no data, maybe return null
       res.status(404).send("Weeks Data was not Found");
