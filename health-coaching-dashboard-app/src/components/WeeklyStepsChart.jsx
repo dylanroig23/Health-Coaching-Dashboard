@@ -42,7 +42,6 @@ const WeeklyStepsChart = () => {
           <Bar dataKey="steps" fill="#3bf563" />
           <ReferenceLine 
             y={averageYValue} 
-            label={{ value: 'Avg: ' + Math.floor(averageYValue), position: 'right'}}
             strokeWidth={2} 
             stroke="red" 
             strokeDasharray="3 3" 
@@ -58,8 +57,8 @@ const WeeklyStepsChart = () => {
         min={0}
         style={{ padding: '2px', width: '65px', marginBottom: '10px' }}
       />
-      <label style={{ marginRight: '20px', color: "#666666", float: "right" }}>
-          <span style={{ color: 'red' }}>Avg: </span>
+      <label style={{ marginRight: "20px", color: "#666666", float: "right" }}>
+          <span style={{ color: "#F16060", fontWeight: "bold" }}>Avg: </span>
           {Math.floor(averageYValue)}
       </label>
     </>
