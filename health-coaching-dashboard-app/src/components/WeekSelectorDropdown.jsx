@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { getWeeksArray } from "../scripts/getWeeksArray";
+import axios from "axios";
 
 const WeekSelectorDropdown = ({ userData }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -12,15 +13,10 @@ const WeekSelectorDropdown = ({ userData }) => {
   };
 
   const handleClose = async (updatedDate) => {
-    const updatedUserData = { ...userData[0], dateOfInterest: updatedDate };
-
-    await fetch(`http://localhost:5000/users/${userData[0].id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(updatedUserData),
-    });
+    await axios.put(
+      `${process.env.REACT_APP_DB_URI}/sessionManager/updateWeekOfInterest`,
+      { weekOfInterest: updatedDate }
+    );
 
     setAnchorEl(null);
     window.location.reload();
@@ -47,7 +43,7 @@ const WeekSelectorDropdown = ({ userData }) => {
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleNoClick}>
         {weeksArray.map((index, count) => (
-          <MenuItem key={index} onClick={() => handleClose(index)}>
+          <MenuItem key={index} onClick={() => handleClose(`week${count + 1}`)}>
             <p>Week {String(count + 1)}</p>
           </MenuItem>
         ))}

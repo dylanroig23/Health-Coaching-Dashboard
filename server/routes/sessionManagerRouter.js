@@ -60,7 +60,7 @@ sessionManagerRouter.put("/updateWeekOfInterest", async (req, res) => {
   const session = await sessionManagerSchema.SessionManager.find({});
   try {
     session[0].weekOfInterest = weekOfInterest;
-    const saveUpdate = await session.save();
+    const saveUpdate = await session[0].save();
     if (saveUpdate) {
       res.send("Week of Interest Updated");
     } else {
