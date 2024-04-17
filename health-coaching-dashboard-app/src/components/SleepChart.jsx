@@ -17,7 +17,7 @@ const SleepChart = (dayOverview) => {
     fetchData();
   }, []);
 
-  if (sleepData.length > 0) {
+  if (sleepData != null && sleepData.length > 0) {
     const l = [
       "Sunday Overview",
       "Monday Overview",
@@ -106,6 +106,12 @@ const SleepChart = (dayOverview) => {
         </div>
         <div id="html-dist"></div>
       </div>
+    );
+  } else {
+    return (
+      <>
+        <h2>Requested Week has Not Yet Occurred</h2>
+      </>
     );
   }
 };

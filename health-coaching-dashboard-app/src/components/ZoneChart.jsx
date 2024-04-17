@@ -17,7 +17,7 @@ const ZoneChart = (dayOverview) => {
     fetchData();
   }, []);
 
-  if (zoneData.length > 0) {
+  if (zoneData != null && zoneData.length > 0) {
     const l = [
       "Sunday Overview",
       "Monday Overview",
@@ -109,6 +109,11 @@ const ZoneChart = (dayOverview) => {
       </div>
     );
   }
+  return (
+    <>
+      <h2>Requested Week has Not Yet Occurred</h2>
+    </>
+  );
 };
 
 export default ZoneChart;

@@ -17,7 +17,7 @@ const StepsChart = (dayOverview) => {
     fetchData();
   }, []);
 
-  if (stepsData.length > 0) {
+  if (stepsData != null && stepsData.length > 0) {
     const l = [
       "Sunday Overview",
       "Monday Overview",
@@ -105,6 +105,12 @@ const StepsChart = (dayOverview) => {
         </div>
         <div id="html-dist"></div>
       </div>
+    );
+  } else {
+    return (
+      <>
+        <h2>Requested Week has Not Yet Occurred</h2>
+      </>
     );
   }
 };
