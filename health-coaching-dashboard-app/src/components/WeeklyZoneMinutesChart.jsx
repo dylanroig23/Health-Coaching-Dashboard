@@ -9,7 +9,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklyZoneMinutesData } from "../scripts/getWeeklyZoneMinutesData";
 
 const WeeklyZoneMinutesChart = () => {

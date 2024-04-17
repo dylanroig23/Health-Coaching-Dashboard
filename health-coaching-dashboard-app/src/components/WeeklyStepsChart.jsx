@@ -9,7 +9,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklyStepsData } from "../scripts/getWeeklyStepsData";
 
 const WeeklyStepsChart = () => {
