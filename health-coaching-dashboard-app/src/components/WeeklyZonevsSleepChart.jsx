@@ -6,10 +6,12 @@ import {
   Tooltip,
   Line,
   LineChart,
-  ResponsiveContainer
+  ResponsiveContainer,
 } from "recharts";
 import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklyZonevsSleepData } from "../scripts/getWeeklyZonevsSleepData";
+
+/* Chart Displays zone and sleep on the same graph with two Y-Axes.  */
 
 const WeeklyZonevsSleepChart = () => {
   const [zonevsSleepData, setzonevsSleepData] = useState([]);
@@ -46,8 +48,18 @@ const WeeklyZonevsSleepChart = () => {
         <LineChart data={zonevsSleepData} margin={0}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="day" />
-          <YAxis yAxisId="sleep" orientation="left" stroke="#0389ad" domain={[0, maxYValueSleep]} />
-          <YAxis yAxisId="zone" orientation="right" stroke="#f7bd52" domain={[0, maxYValueZone]} />
+          <YAxis
+            yAxisId="sleep"
+            orientation="left"
+            stroke="#0389ad"
+            domain={[0, maxYValueSleep]}
+          />
+          <YAxis
+            yAxisId="zone"
+            orientation="right"
+            stroke="#f7bd52"
+            domain={[0, maxYValueZone]}
+          />
           <Tooltip />
           <Line
             yAxisId="sleep"
@@ -69,27 +81,27 @@ const WeeklyZonevsSleepChart = () => {
           />
         </LineChart>
       </ResponsiveContainer>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
-          <label style={{ margin: '10px'}} >Max:</label>
+          <label style={{ margin: "10px" }}>Max:</label>
           <input
             type="number"
             value={maxYValueSleep}
             onChange={handleMaxYChangeSleep}
             step={5}
             min={0}
-            style={{ padding: '2px', width: '50px', marginBottom: '10px' }}
+            style={{ padding: "2px", width: "50px", marginBottom: "10px" }}
           />
         </div>
         <div>
-          <label style={{ margin: '10px'}} >Max:</label>
+          <label style={{ margin: "10px" }}>Max:</label>
           <input
             type="number"
             value={maxYValueZone}
             onChange={handleMaxYChangeZone}
             step={5}
             min={0}
-            style={{ padding: '2px', width: '50px', margin: '0 40px 10px 0'}}
+            style={{ padding: "2px", width: "50px", margin: "0 40px 10px 0" }}
           />
         </div>
       </div>

@@ -2,6 +2,8 @@
     THIS CHART IS USING DUMMY DATA
     The API functionality has not yet been built out with this chart
     as of 3/7/2024
+
+    Has the checklist of weekly goal completion. Currently is hardcoded and does not store information in the database.
 */
 
 import React from "react";

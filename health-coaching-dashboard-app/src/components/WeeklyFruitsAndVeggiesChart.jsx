@@ -2,6 +2,8 @@
     THIS CHART IS USING DUMMY DATA
     The Fitbit API functionality has not yet been built out with this chart
     as of 3/6/2024
+
+    Displays the week's metrics of fruit and veggies data. 
 */
 
 import React from "react";

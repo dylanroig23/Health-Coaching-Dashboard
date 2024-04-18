@@ -5,6 +5,8 @@ import "survey-core/defaultV2.min.css";
 import { AddUserJson } from "../survey json/AddUserJson";
 //import { useNavigate } from "react-router-dom";
 
+/* Creates a survey for adding new user */
+
 const AddUserSurvey = () => {
   const survey = new Model(AddUserJson);
   //const navigate = useNavigate();

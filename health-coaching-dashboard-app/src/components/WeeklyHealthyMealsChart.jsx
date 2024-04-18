@@ -2,6 +2,8 @@
     THIS CHART IS USING DUMMY DATA
     The Fitbit API functionality has not yet been built out with this chart
     as of 3/7/2024
+
+    Displays chart for the week's healthy meals.
 */
 
 import React, { useState } from "react";
@@ -12,7 +14,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer
+  ResponsiveContainer,
 } from "recharts";
 
 const healthyMealsData = [
@@ -61,7 +63,6 @@ const healthyMealsData = [
 ];
 
 const WeeklyHealthyMealsChart = () => {
-
   const [maxYValue, setMaxYValue] = useState();
   const handleMaxYChange = (event) => {
     const newValue = parseFloat(event.target.value);
@@ -102,14 +103,14 @@ const WeeklyHealthyMealsChart = () => {
           />
         </LineChart>
       </ResponsiveContainer>
-      <label style={{ margin: '10px'}} >Max:</label>
+      <label style={{ margin: "10px" }}>Max:</label>
       <input
         type="number"
         value={maxYValue}
         onChange={handleMaxYChange}
         step={1}
         min={0}
-        style={{ padding: '2px', width: '50px', marginBottom: '10px' }}
+        style={{ padding: "2px", width: "50px", marginBottom: "10px" }}
       />
     </>
   );

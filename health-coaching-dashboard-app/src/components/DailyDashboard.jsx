@@ -14,6 +14,9 @@ import DailyGoalsMetTips from "./DailyGoalsMetTips";
 import DailyFruitsAndVeggies from "./DailyFruitsAndVeggies";
 import DailyHealthyMeals from "./DailyHealthyMeals";
 
+/* Component that styles the daily dashboard page. Has access to all days as well as returning to weekly dashboard. Holds DailyNavBar
+and NavDrawer components. */
+
 // Styling for the MUI Component: Paper. This allows the use of the <Item> tag below
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",

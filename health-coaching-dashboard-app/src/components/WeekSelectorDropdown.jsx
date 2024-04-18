@@ -4,6 +4,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { getWeeksArray } from "../scripts/getWeeksArray";
 
+/* Creates a dropdown of previous weeks from the hamburger menu. Is used in NavDrawer Component */
+
 const WeekSelectorDropdown = ({ userData }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

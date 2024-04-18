@@ -2,10 +2,20 @@
     THIS CHART IS USING DUMMY DATA
     The Fitbit API functionality has not yet been built out with this chart
     as of 3/7/2024
+
+    Displays graphics for week's servings of fruit. Data is hardcoded
 */
 
 import React, { useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 const formattedFruitsData = [
   {
@@ -39,7 +49,6 @@ const formattedFruitsData = [
 ];
 
 const WeeklyServingsOfFruitsChart = () => {
-
   const [maxYValue, setMaxYValue] = useState();
   const handleMaxYChange = (event) => {
     const newValue = parseFloat(event.target.value);
@@ -57,14 +66,14 @@ const WeeklyServingsOfFruitsChart = () => {
           <Bar dataKey="fruits" fill="#f2e750" />
         </BarChart>
       </ResponsiveContainer>
-      <label style={{ margin: '10px'}} >Max:</label>
+      <label style={{ margin: "10px" }}>Max:</label>
       <input
         type="number"
         value={maxYValue}
         onChange={handleMaxYChange}
         step={1}
         min={0}
-        style={{ padding: '2px', width: '50px', marginBottom: '10px' }}
+        style={{ padding: "2px", width: "50px", marginBottom: "10px" }}
       />
     </>
   );

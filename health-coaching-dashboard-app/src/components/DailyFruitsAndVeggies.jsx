@@ -2,6 +2,8 @@
     THIS CHART IS USING DUMMY DATA
     The Fitbit API functionality has not yet been built out with this chart
     as of 3/6/2024
+
+    Displays a chart of fruits and veggies.
 */
 
 import React from "react";

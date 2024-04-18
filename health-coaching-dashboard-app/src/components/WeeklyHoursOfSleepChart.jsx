@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import { getCurrentUser } from "../scripts/getCurrentUser";
 import { getWeeklySleepData } from "../scripts/getWeeklySleepData";
+
+/* Displays a graphic that tracks the week's hour of sleep. Currently not used on Weekly Dashboard */
 
 const WeeklyHoursOfSleepChart = () => {
   const [chartSleepData, setChartSleepData] = useState([]);

@@ -14,6 +14,8 @@ import WeekSelectorDropdown from "./WeekSelectorDropdown";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 import AddIcon from "@mui/icons-material/Add";
 
+/* Creates the Hamburger menu that is available on the NavBar and DailyNavBar. */
+
 const NavDrawer = ({ userData }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); //initial state of the NavDrawer is false/closed
 
