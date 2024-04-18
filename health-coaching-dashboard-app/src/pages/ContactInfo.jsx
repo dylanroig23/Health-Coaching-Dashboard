@@ -16,7 +16,7 @@ const JumpWeekDash = styled(Button)(() => ({
   },
 }));
 
-const ContactInfo = ({ CLIENT_ID }) => {
+const ContactInfo = () => {
   return (
     <>
       <PageHeading headingText="Client Contact Information" />

@@ -2,10 +2,9 @@ import React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { getWeeksArray } from "../scripts/getWeeksArray";
 import axios from "axios";
 
-const WeekSelectorDropdown = ({ userData }) => {
+const WeekSelectorDropdown = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {

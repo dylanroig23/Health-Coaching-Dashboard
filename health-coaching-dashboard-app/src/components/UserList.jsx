@@ -93,7 +93,7 @@ const UserList = () => {
                 bgcolor: "#548235",
               },
             }} // Adding some top margin for spacing
-            onClick={() => navigate("/authorize")}
+            onClick={() => navigate("/adduser")}
           >
             Add User
           </Button>
@@ -125,7 +125,7 @@ const UserList = () => {
                 bgcolor: "#548235",
               },
             }} // Adding some top margin for spacing
-            onClick={() => navigate("/authorize")}
+            onClick={() => navigate("/adduser")}
           >
             Add User
           </Button>

@@ -16,18 +16,18 @@ const JumpWeekDash = styled(Button)(() => ({
   },
 }));
 
-const Redcap = ({ CLIENT_ID }) => {
+const Redcap = () => {
   return (
     <>
       <PageHeading headingText="Family Coaching Progress Note" />
       <Grid container spacing={2} justifyContent="center" padding="1rem">
-          <Grid xs={1.5}>
-            <JumpWeekDash href="/">
-              {" "}
-              <u>Return</u>
-            </JumpWeekDash>
-          </Grid>
+        <Grid xs={1.5}>
+          <JumpWeekDash href="/">
+            {" "}
+            <u>Return</u>
+          </JumpWeekDash>
         </Grid>
+      </Grid>
       <RedcapSurveyComponent />
     </>
   );

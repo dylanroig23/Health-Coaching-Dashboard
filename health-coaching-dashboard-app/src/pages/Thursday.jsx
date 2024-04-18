@@ -1,10 +1,10 @@
 import React from "react";
 import DailyDashboard from "../components/DailyDashboard";
 
-const Thursday = ({ CLIENT_ID }) => {
+const Thursday = () => {
   return (
     <>
-      <DailyDashboard headingText={"Thursday Overview"} CLIENT_ID={CLIENT_ID} />
+      <DailyDashboard headingText={"Thursday Overview"} />
     </>
   );
 };

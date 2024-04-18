@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import WeeklyZoneMinutesChart from "../components/WeeklyZoneMinutesChart";
 import WeeklyZonevsSleepChart from "../components/WeeklyZonevsSleepChart";
 import WeeklyStepsChart from "../components/WeeklyStepsChart";
@@ -26,8 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
   border: `1px solid ${"#548235"}`,
 }));
 
-const WeeklyDashboard = ({ CLIENT_ID }) => {
-  const navigate = useNavigate();
+const WeeklyDashboard = () => {
   // the user data that is initially fetched on launch
   const [userData, setUserData] = useState(null);
   const [userName, setUserName] = useState("");
