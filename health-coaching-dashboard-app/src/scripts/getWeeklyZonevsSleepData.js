@@ -1,9 +1,9 @@
 import { getWeeklySleepData } from "./getWeeklySleepData";
 import { getWeeklyZoneMinutesData } from "./getWeeklyZoneMinutesData";
 
-export const getWeeklyZonevsSleepData = async (currentUser) => {
-  const zoneData = await getWeeklyZoneMinutesData(currentUser);
-  const sleepData = await getWeeklySleepData(currentUser);
+export const getWeeklyZonevsSleepData = async () => {
+  const zoneData = await getWeeklyZoneMinutesData();
+  const sleepData = await getWeeklySleepData();
   if (zoneData != null && sleepData != null) {
     const formattedSleepvsZoneData = [
       {

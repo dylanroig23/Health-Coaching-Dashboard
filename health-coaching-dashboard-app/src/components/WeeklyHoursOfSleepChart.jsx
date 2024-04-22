@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { getCurrentUser } from "../scripts/getCurrentUser";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import { getWeeklySleepData } from "../scripts/getWeeklySleepData";
 
 const WeeklyHoursOfSleepChart = () => {
@@ -9,8 +16,7 @@ const WeeklyHoursOfSleepChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const currUser = await getCurrentUser();
-        const weeklySleepData = await getWeeklySleepData(currUser);
+        const weeklySleepData = await getWeeklySleepData();
         setChartSleepData(weeklySleepData);
       } catch (error) {
         console.error("Error fetching data:", error);

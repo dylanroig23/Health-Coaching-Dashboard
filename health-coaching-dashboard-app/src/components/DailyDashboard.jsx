@@ -24,29 +24,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const DailyDashboard = ({ headingText, CLIENT_ID }) => {
-  // the user data that is initially fetched on launch
-  //eslint-disable-next-line
-  const [userData, setUserData] = useState(null);
-
-  // fetches data from the json server, just gets the entire users table
-  const fetchData = async () => {
-    try {
-      const userResponse = await fetch("http://localhost:5000/users");
-      const userData = await userResponse.json();
-
-      if (userData && userData.length > 0) {
-        setUserData(userData);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  // runs when the WeeklyDashboard mounts, just calls fetchData()
-  useEffect(() => {
-    fetchData();
-  }, []); // Empty dependency array ensures this effect runs once on mount...I believe
-
   // dates will eventually be passed to the graphs from the days of the week, to fetch the correct data
   return (
     <>

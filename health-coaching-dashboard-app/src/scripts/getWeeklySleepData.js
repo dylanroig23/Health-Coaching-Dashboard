@@ -3,99 +3,30 @@
     and returning the data in the format that can be used by the
     sleep graph to display the data.
 */
-import { getFormattedDate } from "./getFormattedDate";
-
-const fetchWeeklySleepData = async (currentUser, dateOfInterest) => {
+const fetchWeeklySleepData = async () => {
   try {
-    if (currentUser) {
-      // Get current date in Eastern Standard Time (New York)
-      let startDate = new Date(dateOfInterest);
-      startDate.setDate(startDate.getDate() + 1); // temporary fix
-      const options = { timeZone: "America/New_York" };
-      const startDateString = startDate
-        .toLocaleString("en-US", options)
-        .split(",")[0];
+    const backendResponse = await fetch(
+      `${process.env.REACT_APP_DB_URI}/sleepData/weekData`,
+      {
+        method: "GET",
+      }
+    );
 
-      // Calculate the end date
-      let endDate = new Date(startDate);
-      endDate.setDate(endDate.getDate() + 6);
-      const endDateString = endDate
-        .toLocaleString("en-US", options)
-        .split(",")[0];
+    const responseData = await backendResponse.json();
 
-      startDate = getFormattedDate(startDateString);
-      // console.log("startDate after format: " + startDate);
-      endDate = getFormattedDate(endDateString);
-      // console.log("endDateString after format: " + endDate);
-
-      // Get the sleep data from the past week
-      const fitbitResponse = await fetch(
-        `https://api.fitbit.com/1.2/user/-/sleep/date/${startDate}/${endDate}.json`,
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            authorization: `Bearer ${currentUser.accessToken}`,
-          },
-        }
-      );
-
-      const fitbitData = await fitbitResponse.json();
-      // console.log(fitbitData);
-      return fitbitData;
-    }
+    return responseData;
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error(error);
     return null;
   }
 };
 
-export const getWeeklySleepData = async (currentUser) => {
-  const sleepData = await fetchWeeklySleepData(
-    currentUser,
-    currentUser.dateOfInterest
-  );
+export const getWeeklySleepData = async () => {
+  const sleepData = await fetchWeeklySleepData();
   if (sleepData != null) {
-    const formattedSleepData = [
-      {
-        day: "Sun.",
-        duration: 0,
-      },
-      {
-        day: "Mon.",
-        duration: 0,
-      },
-      {
-        day: "Tues.",
-        duration: 0,
-      },
-      {
-        day: "Wed.",
-        duration: 0,
-      },
-      {
-        day: "Thurs.",
-        duration: 0,
-      },
-      {
-        day: "Fri.",
-        duration: 0,
-      },
-      {
-        day: "Sat.",
-        duration: 0,
-      },
-    ];
-
-    sleepData.sleep.reverse().forEach((entry) => {
-      const date = new Date(entry.dateOfSleep);
-      formattedSleepData[(date.getDay() + 1) % 7].duration += Math.floor(
-        entry.duration / 3600000
-      );
-    });
-
-    return formattedSleepData;
+    return sleepData;
   } else {
     console.log("sleepData was null");
+    return null;
   }
 };

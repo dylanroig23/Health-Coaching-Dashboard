@@ -7,8 +7,6 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
 import WeeklyZoneMinutesChart from "../components/WeeklyZoneMinutesChart";
 import WeeklyZonevsSleepChart from "../components/WeeklyZonevsSleepChart";
 import WeeklyStepsChart from "../components/WeeklyStepsChart";
@@ -27,22 +25,35 @@ const Item = styled(Paper)(({ theme }) => ({
   border: `1px solid ${"#548235"}`,
 }));
 
-const WeeklyDashboard = ({ CLIENT_ID }) => {
-  const navigate = useNavigate();
+const WeeklyDashboard = () => {
   // the user data that is initially fetched on launch
   const [userData, setUserData] = useState(null);
+  const [userName, setUserName] = useState("");
 
   // fetches data from the json server, just gets the entire users table
   const fetchData = async () => {
     try {
-      const userResponse = await fetch("http://localhost:5000/users");
-      const userData = await userResponse.json();
+      const userResponse = await fetch(
+        `${process.env.REACT_APP_DB_URI}/sessionManager/sessionInfo`
+      );
 
-      if (userData && userData.length > 0) {
-        setUserData(userData);
+      if (!userResponse.ok) {
+        throw new Error("Failed to fetch the session data");
+      }
+
+      const userData = await userResponse.json();
+      setUserData(userData);
+
+      if (userData) {
+        const sessionUserRes = await fetch(
+          `${process.env.REACT_APP_DB_URI}/users/sessionUser`
+        );
+        const resData = await sessionUserRes.json();
+        setUserName(resData[0].name);
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.log("no session current session data");
+      window.location.href = "/adduser";
     }
   };
 
@@ -51,12 +62,12 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
     fetchData();
   }, []); // Empty dependency array ensures this effect runs once on mount...I believe
 
-  // if user data exists in the table then display the grid with the graphs
   if (userData) {
     return (
       <>
         <PageHeading
-          headingText={`Welcome to ${userData[0].firstName}'s Weekly Overview`}
+          // headingText={`Welcome to ${userData[0].firstName}'s Weekly Overview`}
+          headingText={`Welcome to ${userName}'s Weekly Overview`}
           userData={userData}
           fromWeekly={true}
         />
@@ -124,38 +135,6 @@ const WeeklyDashboard = ({ CLIENT_ID }) => {
               </Grid>
             </Grid>
           </Box>
-        </Container>
-      </>
-    );
-  } else {
-    // if no users exist then prompt the user to add a user
-    return (
-      <>
-        <PageHeading headingText="Please Add a User" />;
-        <Container
-          maxWidth="sm" // Limiting container width for centering purposes
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Button
-            variant="contained"
-            size="large" // Making the button larger
-            sx={{
-              marginTop: 2,
-              bgcolor: "#a9d18e",
-              border: `2px solid ${"#548235"}`,
-              "&:hover": {
-                bgcolor: "#548235",
-              },
-            }} // Adding some top margin for spacing
-            onClick={() => navigate("/authorize")}
-          >
-            Add User
-          </Button>
         </Container>
       </>
     );

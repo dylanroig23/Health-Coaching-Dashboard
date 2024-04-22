@@ -1,0 +1,115 @@
+{
+  "users": {
+    "user1": {
+      "name": "users name",
+      "startDate": "users start date",
+      "lastUpdated": "the last time this users account was interacted with",
+      "fitbitUserName": "fitbit user name",
+      "accessToken": "fitbit access token",
+      "refreshToken": "fitbit refresh token",
+      "contactInformtion": {
+        "firstName": "first name",
+        "lastName": "last name",
+        "cellPhone": "cell phone number",
+        "homeNumber": "home phone number",
+        "emailAddress": "emailAddress",
+        "emergencyContact1": {
+          "firstname": "first name",
+          "lastname": "last name",
+          "cellPhone": "cell phone number",
+          "homeNumber": "home phone number",
+          "emailAddress": "emailAddress"
+        },
+        "emergencyContact2": {
+          "firstname": "first name",
+          "lastname": "last name",
+          "cellPhone": "cell phone number",
+          "homeNumber": "home phone number",
+          "emailAddress": "emailAddress"
+        }
+      }
+    }
+  },
+  "sleepData": {
+    "_id": "User1",
+    "week1": {
+      "weekStart": "start of week date",
+      "mondaySleep": "monday sleep time",
+      "tuesdaySleep": "tuesday sleep time",
+      "wednesdaySleep": "wednesday sleep time",
+      "thursdaySleep": "thursday sleep time",
+      "fridaySleep": "friday sleep time",
+      "saturdaySleep": "saturday sleep time",
+      "sundaySleep": "sunday sleep time (continue for following weeks)"
+    }
+  },
+  "stepsData": {
+    "_id": "User1",
+    "week1": {
+      "weekStart": "start of week date",
+      "mondaySteps": "monday steps time",
+      "tuesdaySteps": "tuesday steps time",
+      "wednesdaySteps": "wednesday steps time",
+      "thursdaySteps": "thursday steps time",
+      "fridaySteps": "friday steps time",
+      "saturdaySteps": "saturday steps time",
+      "sundaySteps": "sunday steps time (continue for following weeks)"
+    }
+  },
+  "zoneData": {
+    "_id": "User1",
+    "week1": {
+      "weekStart": "start of week date",
+      "mondayZone": "monday Zone time",
+      "tuesdayZone": "tuesday Zone time",
+      "wednesdayZone": "wednesday Zone time",
+      "thursdayZone": "thursday Zone time",
+      "fridayZone": "friday Zone time",
+      "saturdayZone": "saturday Zone time",
+      "sundayZone": "sunday Zone time (continue for following weeks)"
+    }
+  },
+  "veggieServingsData": {
+    "_id": "User1",
+    "week1": {
+      "weekStart": "start of week date",
+      "mondayServings": "monday Servings",
+      "tuesdayServings": "tuesday Servings",
+      "wednesdayServings": "wednesday Servings",
+      "thursdayServings": "thursday Servings",
+      "fridayServings": "friday Servings",
+      "saturdayServings": "saturday Servings",
+      "sundayServings": "sunday Servings (continue for following weeks)"
+    }
+  },
+  "fruitsServingsData": {
+    "_id": "User1",
+    "week1": {
+      "weekStart": "start of week date",
+      "mondayServings": "monday Servings",
+      "tuesdayServings": "tuesday Servings",
+      "wednesdayServings": "wednesday Servings",
+      "thursdayServings": "thursday Servings",
+      "fridayServings": "friday Servings",
+      "saturdayServings": "saturday Servings",
+      "sundayServings": "sunday Servings (continue for following weeks)"
+    }
+  },
+  "healthyMealsData": {
+    "_id": "User1",
+    "week1": {
+      "weekStart": "start of week date",
+      "mondayHealthyMeals": "monday HealthyMeals",
+      "tuesdayHealthyMeals": "tuesday HealthyMeals",
+      "wednesdayHealthyMeals": "wednesday HealthyMeals",
+      "thursdayHealthyMeals": "thursday HealthyMeals",
+      "fridayHealthyMeals": "friday HealthyMeals",
+      "saturdayHealthyMeals": "saturday HealthyMeals",
+      "sundayHealthyMeals": "sunday HealthyMeals (continue for following weeks)"
+    }
+  },
+  "sessionManager": {
+    "currentUser": "the current user that the client wants to see data for",
+    "weekOfInterest": "the weeks data the client whats to view"
+  }
+}

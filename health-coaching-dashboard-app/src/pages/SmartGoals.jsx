@@ -16,18 +16,18 @@ const JumpWeekDash = styled(Button)(() => ({
   },
 }));
 
-const SmartGoals = ({ CLIENT_ID }) => {
+const SmartGoals = () => {
   return (
     <>
       <PageHeading headingText={`Long-Term SMART Goals`} />
       <Grid container spacing={2} justifyContent="center" padding="1rem">
-          <Grid xs={1.5}>
-            <JumpWeekDash href="/">
-              {" "}
-              <u>Return</u>
-            </JumpWeekDash>
-          </Grid>
+        <Grid xs={1.5}>
+          <JumpWeekDash href="/">
+            {" "}
+            <u>Return</u>
+          </JumpWeekDash>
         </Grid>
+      </Grid>
       <SmartGoalsSurveyComponent />
     </>
   );

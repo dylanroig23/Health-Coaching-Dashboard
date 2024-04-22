@@ -7,27 +7,27 @@ import { contactInfoJson } from "../survey json/ContactInfoJson";
 import { smartGoalsJson } from "../survey json/SmartGoalsJson";
 
 export function RedcapSurveyComponent() {
-    const survey = new Model(redcapJson);
-    survey.onComplete.add((sender, options) => {
-        console.log(JSON.stringify(sender.data, null, 3));
-    });
-    return (<Survey model={survey} />);
+  const survey = new Model(redcapJson);
+  survey.onComplete.add((sender, options) => {
+    console.log(JSON.stringify(sender.data, null, 3));
+  });
+  return <Survey model={survey} />;
 }
 
 export function ContactInfoSurveyComponent() {
-    const survey = new Model(contactInfoJson);
-    survey.onComplete.add((sender, options) => {
-        console.log(JSON.stringify(sender.data, null, 3));
-    });
+  const survey = new Model(contactInfoJson);
+  survey.onComplete.add((sender, options) => {
+    console.log(JSON.stringify(sender.data, null, 3));
+  });
 
-    return (<Survey model={survey} />);
+  return <Survey model={survey} />;
 }
 
 export function SmartGoalsSurveyComponent() {
-    const survey = new Model(smartGoalsJson);
-    survey.onComplete.add((sender, options) => {
-        console.log(JSON.stringify(sender.data, null, 3));
-    });
+  const survey = new Model(smartGoalsJson);
+  survey.onComplete.add((sender, options) => {
+    console.log(JSON.stringify(sender.data, null, 3));
+  });
 
-    return (<Survey model={survey} />);
+  return <Survey model={survey} />;
 }

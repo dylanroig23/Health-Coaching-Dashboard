@@ -10,12 +10,13 @@ import ListItemText from "@mui/material/ListItemText";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import EditNoteIcon from "@mui/icons-material/EditNote";
-import CalendarViewIcon from "@mui/icons-material/CalendarMonth"
+import CalendarViewIcon from "@mui/icons-material/CalendarMonth";
 import WeekSelectorDropdown from "./WeekSelectorDropdown";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 import AddIcon from "@mui/icons-material/Add";
+import LogoutIcon from "@mui/icons-material/Logout";
 
-const NavDrawer = ({ userData }) => {
+const NavDrawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); //initial state of the NavDrawer is false/closed
 
   // returns the items that are inside of the NavDrawer
@@ -89,7 +90,21 @@ const NavDrawer = ({ userData }) => {
               <ListItemText
                 primary={
                   <Typography variant="button">
-                    <WeekSelectorDropdown userData={userData} />
+                    <WeekSelectorDropdown />
+                  </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton href="/userlist">
+              <ListItemIcon>
+                <LogoutIcon style={{ fontSize: 42, color: "#548235" }} />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography variant="button">
+                    Return to User Select
                   </Typography>
                 }
               />
@@ -102,9 +117,7 @@ const NavDrawer = ({ userData }) => {
               </ListItemIcon>
               <ListItemText
                 primary={
-                  <Typography variant="button">
-                    Calendar View
-                  </Typography>
+                  <Typography variant="button">Calendar View</Typography>
                 }
               />
             </ListItemButton>
